@@ -10,6 +10,4 @@ module DemoSite
 	def checkout
 		Checkout.new
 	end
-
-
 end
