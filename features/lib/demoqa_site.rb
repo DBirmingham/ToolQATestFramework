@@ -6,5 +6,4 @@ module DemoSite
 		Homepage.new
 	end
 
-
 end
