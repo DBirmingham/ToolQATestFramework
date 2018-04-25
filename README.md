@@ -1,5 +1,4 @@
 # DemoQA E-Commerce Website
---
 
 A project involving testing an ecommerce site using Behaviour-Driven development (BDD) and Test-Driven Development (TDD). We have
 used an agile team methodology to track progress, assign roles and distribute the work evenly.
