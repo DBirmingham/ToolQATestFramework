@@ -3,7 +3,9 @@ require 'capybara/dsl'
 class Checkout
 	include Capybara::DSL
 
-	EMPTY_BASKET_MESSAGE = "entry-content"
+	attr_accessor :quantity
+
+	EMPTY_BASKET_MESSAGE = "div.entry-content"
 	CHECKOUT_PROGRESS_INFO = 'step2'
 	CHECKOUT_PROGRESS_FINAL = 'input-button-buy'
 	EMAIL_MESSAGE = 'email'
@@ -60,14 +62,15 @@ class Checkout
 		page.find('div', text: PHONE_MESSAGE)
 	end
 
-	# CHECKOUT PAGE - SHOW PRODUCT DETAILS
 	def select_product(index_of_item)
 		class_of_item = "wpsc_product_name_#{index_of_item}"
-		click_link(class_of_item)
+		within(:css, "td.#{class_of_item}") do
+			find('a').click
+		end
 	end
 
-	# CHECKOUT PAGE - UPDATE QUANTITY
 	def update_quantity(index_of_item, new_quantity)
+		@quantity = new_quantity
 		selected_item = "wpsc_product_quantity_#{index_of_item}"
 
 		within(:css, "td.#{selected_item}") do
@@ -78,39 +81,59 @@ class Checkout
 	def save_update(index_of_item)
 		selected_item = "wpsc_product_quantity_#{index_of_item}"
 		within(:css, "td.#{selected_item}") do 
-			click('submit')
+			find("input[type='submit']").click
 		end
 	end
 
 	def get_total_price_of_item(index_of_item)
-		selected_item = "wpsc_product_price_#{index_of_item}"
-		within(:css, selected_item) do
-			find(:css, "span").text
+		selected_item = "product_row_#{index_of_item}"
+		within(:css, "tr.#{selected_item}") do
+			within(:css, "td.wpsc_product_price_#{index_of_item}") do
+				@total = find(:css, "span.pricedisplay").text
+			end
 		end
-
+		@total.gsub!('$', '').to_f
 	end
 
-	# CHECKOUT PAGE - REMOVE ITEM
+	def get_price_of_item(index_of_item)
+		selected_item = "product_row_#{index_of_item}"
+		within(:css, "tr.#{selected_item}") do
+			@price = find(:css, "span.pricedisplay").text
+		end
+		@price.gsub!('$', '').to_f
+	end
+
 	def remove_item(index_of_item)
 		selected_item = "wpsc_product_remove_#{index_of_item}"
 		within(:css, "td.#{selected_item}") do 
-			click('submit')
+			find("input[type='submit']").click
 		end
 	end
 
-	# CHECKOUT PAGE - NO ITEM IN THE BASKET MESSAGE
 	def get_empty_basket_message
 		find(:css, EMPTY_BASKET_MESSAGE).text
 	end
 
-	# Generates an array of item names from the checkout page basket
 	def item_list
 		array = []
-		within(:css, "td.wpsc_product_name") do
-      		item = find('a').text
-      		array << item
-    	end
-    	array
+		page.all(:css, "td.wpsc_product_name").each do |item|
+			within(item) do
+				array << find('a').text
+			end
+		end
+		array
+	end
+
+	def check_url
+		URI.parse(current_url)
+	end
+
+	def get_item_name(index_of_item)
+		selected_item = "wpsc_product_name_#{index_of_item}"
+		within(:css, "td.#{selected_item}") do
+			@item_name = find('a').text
+		end
+		@item_name.downcase!.gsub!(' ', '-')
 	end
 
 end
