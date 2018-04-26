@@ -12,14 +12,8 @@ module DemoSite
 		Checkout.new
 	end
 
-<<<<<<< HEAD
 	def category_add
 		DemoQaCategory.new
 	end
 
-=======
-	def category
-		DemoQaCategory.new
-	end
->>>>>>> auto_category_add_item
 end
