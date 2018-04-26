@@ -62,7 +62,6 @@ class Checkout
 		page.find('div', text: PHONE_MESSAGE)
 	end
 
-	# CHECKOUT PAGE - SHOW PRODUCT DETAILS
 	def select_product(index_of_item)
 		class_of_item = "wpsc_product_name_#{index_of_item}"
 		within(:css, "td.#{class_of_item}") do
@@ -70,7 +69,6 @@ class Checkout
 		end
 	end
 
-	# CHECKOUT PAGE - UPDATE QUANTITY
 	def update_quantity(index_of_item, new_quantity)
 		@quantity = new_quantity
 		selected_item = "wpsc_product_quantity_#{index_of_item}"
@@ -105,7 +103,6 @@ class Checkout
 		@price.gsub!('$', '').to_f
 	end
 
-	# CHECKOUT PAGE - REMOVE ITEM
 	def remove_item(index_of_item)
 		selected_item = "wpsc_product_remove_#{index_of_item}"
 		within(:css, "td.#{selected_item}") do 
@@ -113,12 +110,10 @@ class Checkout
 		end
 	end
 
-	# CHECKOUT PAGE - NO ITEM IN THE BASKET MESSAGE
 	def get_empty_basket_message
 		find(:css, EMPTY_BASKET_MESSAGE).text
 	end
 
-	# Generates an array of item names from the checkout page basket
 	def item_list
 		array = []
 		page.all(:css, "td.wpsc_product_name").each do |item|
