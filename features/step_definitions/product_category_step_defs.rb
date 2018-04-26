@@ -1,4 +1,5 @@
 
+
 Given("I am on the home page.") do
     homepage.visit_homepage
 end
@@ -26,3 +27,16 @@ end
 Then("I should see the item count in the basket increment.") do
     expect(category.find_checkout_number).to be > 0
 end
+
+Given("I am on the home page.") do
+  homepage.visit_homepage
+end
+
+When("I click on a blog post.") do
+  homepage.click_blog_post
+end
+
+Then("I should view the correct blog post.") do
+  category.view_product_category_from_blog_post
+end
+

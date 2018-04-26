@@ -2,6 +2,7 @@ require_relative 'pages/demoqa_homepage'
 require_relative 'pages/demoqa_checkout'
 require_relative 'pages/demoqa_category'
 
+
 module DemoSite
 
 	def homepage
@@ -15,5 +16,6 @@ module DemoSite
 	def category_add
 		DemoQaCategory.new
 	end
+
 
 end

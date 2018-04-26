@@ -5,6 +5,7 @@ class DemoQaCategory
 
     ADD_BUTTON = 'Add To Cart'
     FIRST_ITEM_ON_CATEGORY_LIST = 'Accessories'
+    BLOG_PRODUCT_ID = 'single_product_page_container'
 
     def click_add_button(index_of_item)
         page.all(:css, "input[name$=Buy]")[index_of_item].click
@@ -24,6 +25,10 @@ class DemoQaCategory
         within(:css, "h2.prodtitle") do
             find(:css, "a").text
         end
+    end
+
+    def view_product_category_from_blog_post
+        find_by_id(BLOG_PRODUCT_ID)
     end
 
 end

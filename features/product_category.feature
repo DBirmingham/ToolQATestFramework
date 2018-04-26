@@ -1,3 +1,4 @@
+
 Feature: Category Add item
 
     @test1
@@ -13,4 +14,13 @@ Feature: Category Add item
         Given I on the product category page.
         When I click on Add item.
         Then I should see the item count in the basket increment.
+
+Feature: ProductCategory
+
+    @blogtest
+    Scenario: If I am on the home page and I select an item it should show the correct blog post.
+
+	   Given I am on the home page.
+	   When I click on a blog post.
+	   Then I should view the correct blog post.
 
