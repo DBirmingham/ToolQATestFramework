@@ -6,7 +6,6 @@ And("I add an item to cart") do
   homepage.hover_product_categories
   homepage.click_fourth_product_on_dropdown_menu
   category.click_add_button
-  sleep 3
 end
 
 When("I submit the form") do
@@ -30,7 +29,6 @@ Then("I should receive the correct error message") do
   checkout.city_error_message
   checkout.country_error_message
   checkout.phone_error_message
-  sleep 5
 end
 
 Then ("I should get the correct error message") do
