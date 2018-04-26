@@ -23,12 +23,12 @@ And("I got back to the checkout form") do
 end
 
 Then("I should receive the correct error message") do
-  checkout.first_name_error_message
-  checkout.last_name_error_message
-  checkout.address_error_message
-  checkout.city_error_message
-  checkout.country_error_message
-  checkout.phone_error_message
+  expect(checkout.first_name_error_message).to eq 'first name'
+  expect(checkout.last_name_error_message).to eq 'last name'
+  expect(checkout.address_error_message).to eq 'address'
+  expect(checkout.city_error_message).to eq 'city'
+  expect(checkout.country_error_message).to eq 'city'
+  expect(checkout.phone_error_message).to eq 'phone'
 end
 
 Then ("I should get the correct error message") do
