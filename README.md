@@ -10,6 +10,12 @@ The automation testing framework was built using Cucumber based on the selenium 
 
 ## Contents
 
+- [Quickstart](#quickstart)
+- [Tests](#tests)
+- [Project Requirements](#project-requirements)
+- [Sprints](#sprints)
+- [Using Cucumber](#using-cucumber)
+
 ## Quickstart
 
 ### Install
@@ -132,4 +138,3 @@ Then I receive the correct error
 Write feature files using GWT Gherkin syntax. A guide to this can be found here.
 
 Navigate to the root of the project and run the cucumber command. This will read through all of the feature files and print out template step definitions. You can then use the POM to access and manipulate elements on the page.
-
