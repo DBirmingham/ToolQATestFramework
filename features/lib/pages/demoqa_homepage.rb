@@ -72,4 +72,8 @@ class Homepage
 		click_link(SIXTH_ITEM_ON_CATEGORY_LIST)
 	end
 
+	def check_url
+		URI.parse(current_url)
+	end
+
 end
