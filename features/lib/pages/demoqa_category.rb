@@ -12,4 +12,5 @@ class DemoQaCategory
     def check_url
 		URI.parse(current_url)
 	end
+
 end

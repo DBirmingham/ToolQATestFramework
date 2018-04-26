@@ -15,4 +15,5 @@ module DemoSite
 	def category_add
 		DemoQaCategory.new
 	end
+
 end

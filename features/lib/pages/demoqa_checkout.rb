@@ -5,9 +5,9 @@ class Checkout
 
 	attr_accessor :quantity
 
-	EMPTY_BASKET_MESSAGE = "div.entry-content"
-	CHECKOUT_PROGRESS_INFO = 'step2'
-	CHECKOUT_PROGRESS_FINAL = 'input-button-buy'
+	EMPTY_BASKET_MESSAGE = "entry-content"
+	CHECKOUT_PROGRESS_INFO = 'Continue'
+	CHECKOUT_PROGRESS_FINAL = 'Purchase'
 	EMAIL_MESSAGE = 'email'
 	FIRST_NAME_MESSAGE = 'first name'
 	LAST_NAME_MESSAGE = 'last name'
@@ -16,18 +16,14 @@ class Checkout
 	COUNTRY_MESSAGE = 'country'
 	PHONE_MESSAGE = 'phone'
 	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
-	ERROR_MESSAGE = 'Oops, there is nothing in your cart.'
+	ERROR_MESSAGE = 'div.entry-content'
 
 	def check_checkout_error_message
-    	find('div', text: ERROR_MESSAGE)
+    	find(:css, ERROR_MESSAGE).text
   	end
 
 	def click_checkout_your_cart_continue_button
-		click_button(CHECKOUT_PROGRESS_INFO)
-	end
-
-	def click_checkout_info_purchase_button
-		click_button(CHECKOUT_PROGRESS_FINAL)
+		find('span', text: CHECKOUT_PROGRESS_INFO).click
 	end
 
 	def click_checkout_info_purchase_button
@@ -35,31 +31,31 @@ class Checkout
 	end
 
 	def email_error_message
-		page.find('div', text: EMAIL_MESSAGE)
+		find('span', text: EMAIL_MESSAGE).text
 	end
 
 	def first_name_error_message
-		page.find('div', text: FIRST_NAME_MESSAGE)
+		find('span', text: FIRST_NAME_MESSAGE).text
 	end
 
 	def last_name_error_message
-		page.find('div', text: LAST_NAME_MESSAGE)
+		find('span', text: LAST_NAME_MESSAGE).text
 	end
 
 	def address_error_message
-		page.find('div', text: ADDRESS_MESSAGE)
+		find('span', text: ADDRESS_MESSAGE).text
 	end
 
 	def city_error_message
-		page.find('div', text: CITY_MESSAGE)
+		find('span', text: CITY_MESSAGE).text
 	end
 
 	def country_error_message
-		page.find('div', text: COUNTRY_MESSAGE)
+		find('span', text: COUNTRY_MESSAGE).text
 	end
 
 	def phone_error_message
-		page.find('div', text: PHONE_MESSAGE)
+		find('span', text: PHONE_MESSAGE).text
 	end
 
 	def select_product(index_of_item)
