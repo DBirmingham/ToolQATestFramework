@@ -14,10 +14,10 @@ class Checkout
 	COUNTRY_MESSAGE = 'country'
 	PHONE_MESSAGE = 'phone'
 	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
-	ERROR_MESSAGE = 'Oops, there is nothing in your cart.'
+	ERROR_MESSAGE = 'div.entry-content'
 
 	def check_checkout_error_message
-    	find('div', text: ERROR_MESSAGE).text
+    	find(:css, ERROR_MESSAGE).text
   	end
 
 	def click_checkout_your_cart_continue_button
@@ -29,7 +29,7 @@ class Checkout
 	end
 
 	def email_error_message
-		page.find('div', text: EMAIL_MESSAGE)
+		find('span', text: EMAIL_MESSAGE).text
 	end
 
 	def first_name_error_message

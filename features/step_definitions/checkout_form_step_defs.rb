@@ -6,6 +6,7 @@ And("I add an item to cart") do
   homepage.hover_product_categories
   homepage.click_fourth_product_on_dropdown_menu
   category.click_add_button
+  sleep 5
 end
 
 When("I submit the form") do
@@ -23,14 +24,15 @@ And("I got back to the checkout form") do
 end
 
 Then("I should receive the correct error message") do
+  expect(checkout.email_error_message).to eq 'email'
   expect(checkout.first_name_error_message).to eq 'first name'
   expect(checkout.last_name_error_message).to eq 'last name'
   expect(checkout.address_error_message).to eq 'address'
   expect(checkout.city_error_message).to eq 'city'
-  expect(checkout.country_error_message).to eq 'city'
+  expect(checkout.country_error_message).to eq 'Please select a country'
   expect(checkout.phone_error_message).to eq 'phone'
 end
 
 Then ("I should get the correct error message") do
-  checkout.check_checkout_error_message
+  expect(checkout.check_checkout_error_message).to eq 'Oops, there is nothing in your cart.'
 end
