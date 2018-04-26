@@ -13,6 +13,7 @@ Feature: Checkout
 		When I click on the product name on the checkout page
 		Then The blog page is displayed
 
+	@test_item_quantity_update
 	Scenario: I should be able to update the quantity of the product on the checkout page
 		Given I visit the homepage
 		And I have an item in my basket
@@ -21,7 +22,7 @@ Feature: Checkout
 		And I click on the update
 		Then The total price should be update
 
-	
+	@test_checkout_item_removable
 	Scenario: If I remove an item from the checkout page it should update accordingly.
 		Given I visit the homepage
 		And I have an item in my basket
@@ -29,8 +30,6 @@ Feature: Checkout
 		When I click remove
 		Then I should get the correct error message on the checkout page
 
-	@test
-	Scenario: blah
 		Given I visit the homepage
 		And I have more than one item in my basket
 		And I click on the checkout cart

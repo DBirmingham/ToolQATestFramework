@@ -1,15 +1,15 @@
 Given("I have an item in my basket") do
 	homepage.hover_product_categories
 	homepage.click_first_product_on_dropdown_menu
-	category_add.click_add_button 0
+	category.click_add_button 0
 	sleep 2
 end
 
 Given("I have more than one item in my basket") do
 	homepage.hover_product_categories
 	homepage.click_first_product_on_dropdown_menu
-	category_add.click_add_button 0
-	category_add.click_add_button 1
+	category.click_add_button 0
+	category.click_add_button 1
 	sleep 2
 end
 

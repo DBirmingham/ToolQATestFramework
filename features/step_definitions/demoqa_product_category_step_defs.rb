@@ -20,7 +20,7 @@ Given("I on the product category page.") do
   end
   
 When("I click on Add item.") do
-    category.click_add_button
+    category.click_add_button(0)
     sleep 5
 end
   

@@ -1,11 +1,20 @@
 # DemoQA E-Commerce Website
 
-A project involving testing an ecommerce site using Behaviour-Driven development (BDD) and Test-Driven Development (TDD). We have
+A project involving testing an ecommerce site using Behaviour-Driven development (BDD). We have
 used an agile team methodology to track progress, assign roles and distribute the work evenly.
+
+The UI Tests were created and automated according to the requirements given by the stakeholder.  
+User Stories and features were managed using Trello.
 
 The automation testing framework was built using Cucumber based on the selenium webdriver with Capybara.
 
 ## Contents
+
+- [Quickstart](#quickstart)
+- [Tests](#tests)
+- [Project Requirements](#project-requirements)
+- [Sprints](#sprints)
+- [Using Cucumber](#using-cucumber)
 
 ## Quickstart
 
@@ -125,10 +134,7 @@ When When I click remove
 Then I receive the correct error
 ```
 
-## Using Capybara
-
 ## Using Cucumber
 Write feature files using GWT Gherkin syntax. A guide to this can be found here.
 
 Navigate to the root of the project and run the cucumber command. This will read through all of the feature files and print out template step definitions. You can then use the POM to access and manipulate elements on the page.
-

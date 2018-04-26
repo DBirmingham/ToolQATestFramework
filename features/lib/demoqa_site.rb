@@ -13,9 +13,8 @@ module DemoSite
 		Checkout.new
 	end
 
-	def category_add
+	def category
 		DemoQaCategory.new
 	end
-
 
 end
