@@ -5,7 +5,7 @@ class Checkout
 
 	attr_accessor :quantity
 
-	EMPTY_BASKET_MESSAGE = "entry-content"
+	EMPTY_BASKET_MESSAGE = "div.entry-content"
 	CHECKOUT_PROGRESS_INFO = 'Continue'
 	CHECKOUT_PROGRESS_FINAL = 'Purchase'
 	EMAIL_MESSAGE = 'email'
@@ -16,10 +16,9 @@ class Checkout
 	COUNTRY_MESSAGE = 'country'
 	PHONE_MESSAGE = 'phone'
 	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
-	ERROR_MESSAGE = 'div.entry-content'
 
 	def check_checkout_error_message
-    	find(:css, ERROR_MESSAGE).text
+    	find(:css, EMPTY_BASKET_MESSAGE).text
   	end
 
 	def click_checkout_your_cart_continue_button

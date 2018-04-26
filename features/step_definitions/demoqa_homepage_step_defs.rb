@@ -20,6 +20,6 @@ Then("I am on the cart page") do
   expect(checkout.check_url.path).to include 'checkout'
 end
 
-Then("I am on the accessory page") do
+Then("I am on the accessories page") do
   expect(checkout.check_url.path).to include 'accessories'
 end
