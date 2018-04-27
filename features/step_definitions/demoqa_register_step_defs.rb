@@ -1,22 +1,21 @@
 
-# Given("I navigate to the register page") do
-#     homepage.click_on_my_account_button
-#     register.navigate_register_page
-# end
+Given("I navigate to the register page") do
+    homepage.click_on_my_account_button
+    register.navigate_register_page
+end
 
-# When("I submit a valid email and username") do
-#   register.fill_in_username("Useasasdadawejk1231")
-#   register.fill_in_email("asdhbasasdsadsa12@gmail.com")
-#   register.click_register_button
-# end
+When("I submit a valid email and username") do
+  register.fill_in_username("Useasasdadawejk1231")
+  register.fill_in_email("asdhbasasdsadsa12@gmail.com")
+  register.click_register_button
+end
 
-# Then("Receive the confirmation message") do
-#   expect(register.register_confirmation_message).to eq 'Registration complete. Please check your email.'
-# end
+Then("Receive the confirmation message") do
+  expect(register.register_confirmation_message).to eq 'Registration complete. Please check your email.'
+end
 
 
 Given("I am on the email homepage") do
-  # @gmail.gmail_homepage.visit_home_page
   gmail_homepage.visit_home_page
   gmail_homepage.fill_in_username("spartaglobaltest2@gmail.com")
   gmail_homepage.click_next_after_inputing_username

@@ -2,10 +2,10 @@ Feature: Register
     @reg
     Scenario: If I submit a valid email and correctly follow the sequential steps then I should be successfully registered.
 
-        # Given I visit the homepage
-        # And I navigate to the register page
-        # When I submit a valid email and username
-        # Then Receive the confirmation message
+        Given I visit the homepage
+        And I navigate to the register page
+        When I submit a valid email and username
+        Then Receive the confirmation message
 
         Given I am on the email homepage
         And Successfully logged in
