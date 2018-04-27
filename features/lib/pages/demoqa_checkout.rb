@@ -1,20 +1,18 @@
 require 'capybara/dsl'
+require 'pry'
 
 class Checkout
 	include Capybara::DSL
 
-	attr_accessor :quantity
+	attr_accessor :quantity, :checkout_error_list
+
+	def initialize
+		@checkout_error_list = ["Please enter a valid email.", "Please enter a valid first name.", "Please enter a valid last name.", "Please enter a valid address.", "Please enter a valid city.", "Please enter a valid country.", "Please enter a valid phone."]
+	end
 
 	EMPTY_BASKET_MESSAGE = "div.entry-content"
 	CHECKOUT_PROGRESS_INFO = 'Continue'
 	CHECKOUT_PROGRESS_FINAL = 'Purchase'
-	EMAIL_MESSAGE = 'email'
-	FIRST_NAME_MESSAGE = 'first name'
-	LAST_NAME_MESSAGE = 'last name'
-	ADDRESS_MESSAGE = 'address'
-	CITY_MESSAGE = 'city'
-	COUNTRY_MESSAGE = 'country'
-	PHONE_MESSAGE = 'phone'
 	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
 
 	def check_checkout_error_message
@@ -29,32 +27,12 @@ class Checkout
 		click_button(CHECKOUT_PROGRESS_FINAL)
 	end
 
-	def email_error_message
-		find('span', text: EMAIL_MESSAGE).text
-	end
-
-	def first_name_error_message
-		find('span', text: FIRST_NAME_MESSAGE).text
-	end
-
-	def last_name_error_message
-		find('span', text: LAST_NAME_MESSAGE).text
-	end
-
-	def address_error_message
-		find('span', text: ADDRESS_MESSAGE).text
-	end
-
-	def city_error_message
-		find('span', text: CITY_MESSAGE).text
-	end
-
-	def country_error_message
-		find('span', text: COUNTRY_MESSAGE).text
-	end
-
-	def phone_error_message
-		find('span', text: PHONE_MESSAGE).text
+	def check_form_error_message
+		errors = []
+		page.all(:css, "p.validation-error").each do |error|
+			errors << error.text
+		end
+		errors
 	end
 
 	def select_product(index_of_item)
