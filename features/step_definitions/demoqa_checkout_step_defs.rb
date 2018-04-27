@@ -49,7 +49,7 @@ When("I click remove") do
 	checkout.remove_item 0
 end
 
-Then("I should get the correct error message on the checkout page") do 
+Then("I should get the correct error message on the checkout page") do
 	expect(checkout.get_empty_basket_message).to eq 'Oops, there is nothing in your cart.'
 end
 

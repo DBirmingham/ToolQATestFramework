@@ -1,5 +1,5 @@
 Feature: Checkout
-	
+
 	Scenario: If I click on my basket I should be able to view my items.
 		Given I visit the homepage
 		And I have an item in my basket
