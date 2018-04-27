@@ -1,6 +1,7 @@
 require 'capybara/cucumber'
 require 'capybara/dsl'
 require_relative '../lib/demoqa_site'
+require_relative '../lib/gmail_site'
 
 Capybara.register_driver :chrome do |app|
 	Capybara::Selenium::Driver.new(app, :browser => :chrome)
@@ -14,3 +15,4 @@ Capybara.configure do |config|
 end
 
 World(DemoSite)
+World(GmailSite)
