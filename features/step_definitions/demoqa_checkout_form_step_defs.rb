@@ -5,7 +5,7 @@ end
 And("I add an item to cart") do
   homepage.hover_product_categories
   homepage.click_fourth_product_on_dropdown_menu
-  category.click_add_button
+  category.click_add_button 0
   sleep 5
 end
 
