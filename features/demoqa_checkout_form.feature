@@ -13,4 +13,11 @@ Feature: CheckoutFormError
 		When I submit the form
 		And I got back to the checkout form
 		Then I should receive the correct error message
-		
+
+	@test_checkout_form_success
+  Scenario: If I input the correct details in the checkout form I would get a confirmation message on a new page
+
+		Given I am on the checkout page.
+		And I input the correct details.
+		When I submit the form.
+		Then I should receive the confirmation.
