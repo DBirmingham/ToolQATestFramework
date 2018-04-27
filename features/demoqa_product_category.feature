@@ -4,7 +4,7 @@ Feature: Category Add item
     @test_category_select
     Scenario: If I select the product category I should be able to see the list of items from that category.
 
-        Given I am on the home page.
+        Given I visit the homepage
         When I click on a product category.
         Then I should get a list of items that match the category.
 
@@ -18,7 +18,7 @@ Feature: Category Add item
     @test_blog_post
     Scenario: If I am on the home page and I select an item it should show the correct blog post.
 
-	   Given I am on the home page.
+	   Given I visit the homepage
 	   When I click on a blog post.
 	   Then I should view the correct blog post.
 
