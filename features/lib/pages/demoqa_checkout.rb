@@ -1,5 +1,4 @@
 require 'capybara/dsl'
-require 'pry'
 
 class Checkout
 	include Capybara::DSL
