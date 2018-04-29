@@ -3,27 +3,31 @@ require 'capybara/dsl'
 class Register 
     include Capybara::DSL
 
-    REGISTER_LINK = 'Register'
-    USER_ID = 'user_login'
-    EMAIL_ID = 'user_email'
-    REGISTER_BUTTON = 'wp-submit'
-    RESET_PASSWORD = 'pass1-text'
-    RESET_BUTTON = 'wp-submit'
+    attr_accessor :register_link_text, :username_id, :email_id, :register_button_id, :reset_password, :reset_button_id
+
+    def initialize
+        @register_link_text = 'Register'
+        @username_id = 'user_login'
+        @email_id = 'user_email'
+        @register_button_id = 'wp-submit'
+        @reset_password = 'pass1-text'
+        @reset_button_id = 'wp-submit'
+    end
 
     def navigate_register_page
-        click_link(REGISTER_LINK)
+        click_link(@register_link_text)
     end
 
     def fill_in_username(username)
-        fill_in(USER_ID, :with => username)
+        fill_in(@username_id, :with => username)
     end
 
     def fill_in_email(email)
-        fill_in(EMAIL_ID, :with => email)
+        fill_in(@email_id, :with => email)
     end
 
     def click_register_button
-        click_button(REGISTER_BUTTON)
+        click_button(@register_button_id)
     end
 
     def register_confirmation_message
@@ -33,11 +37,11 @@ class Register
     end
 
     def fill_in_password(new_password)
-        fill_in(RESET_PASSWORD, :with => new_password)
+        fill_in(@reset_password, :with => new_password)
     end
 
     def click_reset_password
-        click_button(RESET_PASSWORD)
+        click_button(@reset_button_id)
     end
 
     def account_confirmation_message

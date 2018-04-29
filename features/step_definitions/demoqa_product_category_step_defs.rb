@@ -6,7 +6,7 @@ end
 
 When("I click on a product category.") do
     homepage.hover_product_categories
-    homepage.click_first_product_on_dropdown_menu
+    homepage.select_category_by_name("Accessories")
 end
 
 Then("I should get a list of items that match the category.") do
@@ -16,7 +16,7 @@ end
 Given("I on the product category page.") do
     homepage.visit_homepage
     homepage.hover_product_categories
-    homepage.click_second_product_on_dropdown_menu
+    homepage.select_category_by_name("iMacs")
   end
 
 When("I click on Add item.") do
