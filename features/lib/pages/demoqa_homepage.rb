@@ -3,73 +3,47 @@ require 'capybara/dsl'
 class Homepage
 	include Capybara::DSL
 
-	HOMEPAGE_URL = 'http://store.demoqa.com/'
-	PRODUCT_CATEGORY = 'Product Category'
-	CHECKOUT_CART = 'Checkout'
-	FIRST_ITEM_ON_CATEGORY_LIST = 'Accessories'
-	SECOND_ITEM_ON_CATEGORY_LIST = 'iMacs'
-	THIRD_ITEM_ON_CATEGORY_LIST = 'iPads'
-	FOURTH_ITEM_ON_CATEGORY_LIST = 'iPhones'
-	FITH_ITEM_ON_CATEGORY_LIST = 'iPods'
-	SIXTH_ITEM_ON_CATEGORY_LIST = 'MacBooks'
-	MY_ACCOUNT = 'My Account'
-	ALL_PRODUCTS = 'All Product'
-	BLOG_POST_LINK = 'More Details'
+	attr_accessor :homepage_url, :product_category_link_text, :checkout_cart_link_text, :my_account_link_text, :all_products_link_text, :blog_post_link_text
+
+	def initialize
+		@homepage_url = 'http://store.demoqa.com/'
+		@product_category_link_text = 'Product Category'
+		@checkout_cart_link_text = 'Checkout'
+		@my_account_link_text = 'My Account'
+		@all_products_link_text = 'All Product'
+		@blog_post_link_text = 'More Details'
+	end
 
 	def visit_homepage
-		visit(HOMEPAGE_URL)
+		visit(@homepage_url)
 	end
 
 	def click_blog_post
-		 click_link(BLOG_POST_LINK)
+		 click_link(@blog_post_link_text)
  	end
 
 	def click_on_product_category
-		click_link(PRODUCT_CATEGORY)
-	end
-
-	def click_product_accessories
-		click_link(FIRST_ITEM_ON_CATEGORY_LIST)
+		click_link(@product_category_link_text)
 	end
 
 	def click_on_my_account_button
-		click_link(MY_ACCOUNT)
+		click_link(@my_account_link_text)
 	end
 
 	def visit_checkout_cart
-		click_link(CHECKOUT_CART)
+		click_link(@checkout_cart_link_text)
 	end
 
 	def click_on_all_products_button
-		click_link(ALL_PRODUCTS)
+		click_link(@all_products_link_text)
 	end
 
 	def hover_product_categories
-		find_link(PRODUCT_CATEGORY).hover
+		find_link(@product_category_link_text).hover
 	end
 
-	def click_first_product_on_dropdown_menu
-		click_link(FIRST_ITEM_ON_CATEGORY_LIST)
-	end
-
-	def click_second_product_on_dropdown_menu
-		click_link(SECOND_ITEM_ON_CATEGORY_LIST)
-	end
-
-	def click_third_product_on_dropdown_menu
-		click_link(THIRD_ITEM_ON_CATEGORY_LIST)
-	end
-
-	def click_fourth_product_on_dropdown_menu
-		click_link(FOURTH_ITEM_ON_CATEGORY_LIST)
-	end
-
-	def click_fith_product_on_dropdown_menu
-		click_link(FITH_ITEM_ON_CATEGORY_LIST)
-	end
-
-	def click_sixth_product_on_dropdown_menu
-		click_link(SIXTH_ITEM_ON_CATEGORY_LIST)
+	def select_category_by_name category
+		click_link(category)
 	end
 
 	def check_url

@@ -1,19 +1,22 @@
 require 'capybara/dsl'
 
 class GmailHomepage
-    include Capybara::DSL 
+    include Capybara::DSL
 
-    URL = "https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession"
-    GMAIL_USERNAME = "identifierId"
-    GMAIL_PASSWORD = "password"
-    NEXT_BUTTON_ID = "identifierNext"
+    attr_accessor :url, :gmail_username_id, :gmail_password_id
+
+    def initalize
+        @url = "https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession"
+        @gmail_username_id = "identifierId"
+        @gmail_password_id = "password"
+    end
 
     def visit_home_page
-        visit(URL)
+        visit(@url)
     end
 
     def fill_in_username email
-        fill_in(GMAIL_USERNAME, :with => email )
+        fill_in(@gmail_username_id, :with => email )
     end 
 
     def click_next_after_inputing_username
@@ -21,7 +24,7 @@ class GmailHomepage
     end
 
     def fill_in_password password
-        fill_in(GMAIL_PASSWORD, :with => password)
+        fill_in(@gmail_password_id, :with => password)
     end
 
     def click_next_after_inputing_password

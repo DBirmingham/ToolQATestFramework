@@ -3,49 +3,37 @@ require 'capybara/dsl'
 class Checkout
 	include Capybara::DSL
 
-	attr_accessor :quantity, :checkout_error_list
+	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation 
 
 	def initialize
 		@checkout_error_list = ["Please enter a valid email.", "Please enter a valid first name.", "Please enter a valid last name.", "Please enter a valid address.", "Please enter a valid city.", "Please enter a valid country.", "Please enter a valid phone."]
+		@empty_basket_message = "div.entry-content"
+		@checkout_progress_info = 'Continue'
+		@checkout_progress_final = 'Purchase'
+		@error_field_message = 'wpsc_error_msg_field_name'
+		@email_field = 'wpsc_checkout_form_9'
+		@first_name_field = 'wpsc_checkout_form_2'
+		@last_name_field = 'wpsc_checkout_form_3'
+		@address_field = 'wpsc_checkout_form_4'
+		@city_field = 'wpsc_checkout_form_5'
+		@county_field = 'wpsc_checkout_form_6'
+		@country_dropdown = 'wpsc_checkout_form_7'
+		@postal_code = 'wpsc_checkout_form_8'
+		@phone_field = 'wpsc_checkout_form_18'
+		@shipping_address = 'shippingSameBilling'
+		@checkout_confirmation = 'content_container'
 	end
 
-	EMPTY_BASKET_MESSAGE = "div.entry-content"
-	CHECKOUT_PROGRESS_INFO = 'Continue'
-	CHECKOUT_PROGRESS_FINAL = 'Purchase'
-<<<<<<< HEAD
-=======
-	# EMAIL_MESSAGE = 'email'
-	FIRST_NAME_MESSAGE = 'first name'
-	LAST_NAME_MESSAGE = 'last name'
-	ADDRESS_MESSAGE = 'address'
-	CITY_MESSAGE = 'city'
-	COUNTRY_MESSAGE = 'country'
-	PHONE_MESSAGE = 'phone'
->>>>>>> checkout_success
-	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
-	EMAIL_FIELD = 'wpsc_checkout_form_9'
-	FIRST_NAME_FIELD = 'wpsc_checkout_form_2'
-	LAST_NAME_FIELD = 'wpsc_checkout_form_3'
-	ADDRESS_FIELD = 'wpsc_checkout_form_4'
-	CITY_FIELD = 'wpsc_checkout_form_5'
-	COUNTY_FIELD = 'wpsc_checkout_form_6'
-	COUNTRY_DROPDOWN = 'wpsc_checkout_form_7'
-	POSTAL_CODE = 'wpsc_checkout_form_8'
-	PHONE_FIELD = 'wpsc_checkout_form_18'
-	SHIPPING_ADDRESS = 'shippingSameBilling'
-	CHECKOUT_CONFIRMATION = 'content_container'
-
-
 	def check_checkout_error_message
-    	find(:css, EMPTY_BASKET_MESSAGE).text
+    	find(:css, @empty_basket_message).text
   	end
 
 	def click_checkout_your_cart_continue_button
-		find('span', text: CHECKOUT_PROGRESS_INFO).click
+		find('span', text: @checkout_progress_info).click
 	end
 
 	def click_checkout_info_purchase_button
-		click_button(CHECKOUT_PROGRESS_FINAL)
+		click_button(@checkout_progress_final)
 	end
 
 	def check_form_error_message
@@ -105,7 +93,7 @@ class Checkout
 	end
 
 	def get_empty_basket_message
-		find(:css, EMPTY_BASKET_MESSAGE).text
+		find(:css, @empty_basket_message).text
 	end
 
 	def item_list
@@ -131,52 +119,50 @@ class Checkout
 	end
 
 	def fill_in_email(email_address)
-		fill_in(EMAIL_FIELD, with: email_address)
+		fill_in(@email_field, with: email_address)
 	end
 
 	def fill_in_first_name(firstname)
-		fill_in(FIRST_NAME_FIELD, with: firstname)
+		fill_in(@first_name_field, with: firstname)
 	end
 
 	def fill_in_last_name(lastname)
-		fill_in(LAST_NAME_FIELD, with: lastname)
+		fill_in(@last_name_field, with: lastname)
 	end
 
 	def fill_in_address(address)
-		fill_in(ADDRESS_FIELD, with: address)
+		fill_in(@address_field, with: address)
 	end
 
 	def fill_in_city(city)
-		fill_in(CITY_FIELD, with: city)
+		fill_in(@city_field, with: city)
 	end
 
 	def fill_in_county(county)
-		fill_in(COUNTY_FIELD, with: county)
+		fill_in(@county_field, with: county)
 	end
 
 	def fill_in_country(value)
-		find(:id, COUNTRY_DROPDOWN).find(:xpath, value).click
-
+		find(:id, @country_dropdown).find(:xpath, value).click
 	end
 
-
 	def fill_in_post_code(post_code)
-		fill_in(POSTAL_CODE, with: post_code)
+		fill_in(@postal_code, with: post_code)
 	end
 
 	def fill_in_phone(phone)
-		fill_in(PHONE_FIELD, with: phone)
+		fill_in(@phone_field, with: phone)
 	end
 
 	def fill_in_shipphing
-		check(SHIPPING_ADDRESS)
+		check(@shipping_address)
 	end
 
 	def checkout_confirmation
-		find_by_id(CHECKOUT_CONFIRMATION)
-		 within(:css, 'div.wpsc-transaction-results-wrap') do
-			 	find('p').text
-			end
+		find_by_id(@checkout_confirmation)
+		within(:css, 'div.wpsc-transaction-results-wrap') do
+			find('p').text
+		end
 	end
 
 end

@@ -4,8 +4,8 @@ end
 
 And("I add an item to cart") do
   homepage.hover_product_categories
-  homepage.click_fourth_product_on_dropdown_menu
-  category.click_add_button 0
+  homepage.select_category_by_name("iPhones")
+  category.click_add_button(0)
   sleep 5
 end
 
@@ -34,8 +34,8 @@ end
 Given("I am on the checkout page.") do
   homepage.visit_homepage
   homepage.hover_product_categories
-  homepage.click_fourth_product_on_dropdown_menu
-  category.click_add_button 0
+  homepage.select_category_by_name("iPhones")
+  category.click_add_button(0)
   homepage.visit_checkout_cart
   checkout.click_checkout_your_cart_continue_button
 end

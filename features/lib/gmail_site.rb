@@ -5,10 +5,5 @@ module GmailSite
     def gmail_homepage
         GmailHomepage.new
     end
-
-
-
-
-
-
+    
 end
