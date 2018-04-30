@@ -1,77 +1,52 @@
-Given("I am on the home page.") do
-    homepage.visit_homepage
+When("I click on a product category") do
+    demo_homepage.hover_product_categories
+    demo_homepage.select_category_by_name("Accessories")
 end
 
-When("I click on a product category.") do
-    homepage.hover_product_categories
-    homepage.select_category_by_name("Accessories")
+Then("I should get a list of items that match the category") do
+    expect(demo_checkout.check_url.path).to include 'accessories'
+    expect(demo_category.find_category_name_and_product_name).to eq "Magic Mouse"
 end
 
-Then("I should get a list of items that match the category.") do
-    expect(category.find_category_name_and_product_name).to eq "Magic Mouse"
+Given("I am on the product category page") do
+    demo_homepage.visit_homepage
+    demo_homepage.hover_product_categories
+    demo_homepage.select_category_by_name("iMacs")
 end
 
-Given("I on the product category page.") do
-    homepage.visit_homepage
-    homepage.hover_product_categories
-    homepage.select_category_by_name("iMacs")
-  end
-
-When("I click on Add item.") do
-    category.click_add_button(0)
-    wait_time(5)
+When("I click on Add item") do
+    demo_category.click_add_button(0)
+    sleep 5
 end
 
-Then("I should see the item count in the basket increment.") do
-    expect(category.find_checkout_number).to be > 0
+Then("I should see the item count in the basket increment") do
+    expect(demo_category.find_checkout_number).to be > 0
 end
 
-Given("I am on the home page.") do
-  homepage.visit_homepage
+When("I click on a blog post") do
+    demo_homepage.click_blog_post
 end
 
-When("I click on a blog post.") do
-  homepage.click_blog_post
-end
-
-Then("I should view the correct blog post.") do
-  category.view_product_category_from_blog_post
-end
-
-Given('I am on the product category page') do
-  homepage.visit_homepage
-  homepage.click_on_product_category
-end
-
-And('I am in the list view grid') do
-  category.view_list_view
+Then("I should view the correct blog post") do
+    demo_category.view_product_category_from_blog_post
 end
 
 When('I select grid view') do
-  category.grid_view
+    demo_category.grid_view
 end
 
 Then('the product should be displayed in the grid view') do
-  category.view_grid_view
-  expect(category.check_view_title).to eq 'Product Category'
-  expect(category.check_item_in_grid).to eq '132px'
-end
-
-And('I am in the list view list') do
-  category.view_list_view
-end
-
-And('I am in the grid view list') do
-  category.grid_view
+    demo_category.view_grid_view
+    expect(demo_category.check_view_title).to eq 'Accessories'
+    expect(demo_category.check_item_in_grid).to eq '132px'
 end
 
 When('I select list view') do
-  category.list_view
+    demo_category.list_view
 end
 
 Then('the product should be displayed in the list view') do
-  category.view_list_view
-  expect(category.check_view_title).to eq 'Product Category'
-  expect(category.check_item_in_list).to eq '660px'
-
+    demo_category.view_list_view
+    expect(demo_category.check_view_title).to eq 'Accessories'
+    expect(demo_category.check_item_in_list).to eq '660px'
 end

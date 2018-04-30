@@ -1,6 +1,6 @@
 require 'capybara/dsl'
 
-class Checkout
+class DemoQaCheckout
 	include Capybara::DSL
 
 	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation 
@@ -164,5 +164,4 @@ class Checkout
 			find('p').text
 		end
 	end
-
 end

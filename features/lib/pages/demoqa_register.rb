@@ -1,6 +1,6 @@
 require 'capybara/dsl'
 
-class Register 
+class DemoQaRegister 
     include Capybara::DSL
 
     attr_accessor :register_link_text, :username_id, :email_id, :register_button_id, :reset_password, :reset_button_id
@@ -49,6 +49,4 @@ class Register
             find(:css, 'p.reset-pass').text
         end
     end
-
-
 end
