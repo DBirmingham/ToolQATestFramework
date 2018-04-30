@@ -3,7 +3,7 @@ require 'capybara/dsl'
 class DemoQaCheckout
 	include Capybara::DSL
 
-	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation 
+	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation
 
 	def initialize
 		@checkout_error_list = ["Please enter a valid email.", "Please enter a valid first name.", "Please enter a valid last name.", "Please enter a valid address.", "Please enter a valid city.", "Please enter a valid country.", "Please enter a valid phone."]
@@ -143,11 +143,7 @@ class DemoQaCheckout
 	end
 
 	def fill_in_country(value)
-<<<<<<< HEAD
 		find(:id, @country_dropdown).find(:xpath, value).click
-=======
-		find(:id, COUNTRY_DROPDOWN).find(:xpath, value).click
->>>>>>> feature_registration
 	end
 
 	def fill_in_post_code(post_code)

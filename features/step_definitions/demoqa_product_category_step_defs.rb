@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 When("I click on a product category") do
     @demo_homepage = demo_homepage
     @demo_homepage.hover_product_categories
     @demo_homepage.select_random_category
     @product_cat = @demo_homepage.selected_category
-=======
-Given("I am on the home page.") do
-    homepage.visit_homepage
->>>>>>> feature_registration
 end
 
 Then("I should get a list of items that match the category") do

@@ -37,6 +37,10 @@ end
 
 When("I click remove") do
 	@list_length = demo_checkout.item_list.length
+	@wait_time = wait_time(10)
+	@wait_time.until{
+		page.has_css?('td.wpsc_product_remove_0')
+	}
 	demo_checkout.remove_item(0)
 end
 
