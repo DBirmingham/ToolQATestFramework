@@ -20,7 +20,7 @@ class DemoQaCategory
 
     def check_url
 		URI.parse(current_url)
-	end
+	  end
 
     def find_checkout_number
         within(:id, "header_cart") do
@@ -89,6 +89,4 @@ class DemoQaCategory
       end
       array
     end
-
-
 end

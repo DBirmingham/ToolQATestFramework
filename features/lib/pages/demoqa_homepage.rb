@@ -24,7 +24,8 @@ class DemoQaHomepage
 		within(:css, "section.footer_featured") do
 			page.all('li')[index_of_blog_post].click
 		end
- 	end
+
+	
 
  	def get_name_of_blog_post(index_of_blog_post)
  		array = []
