@@ -1,6 +1,6 @@
 Given("I have an item in my basket") do
 	demo_homepage.hover_product_categories
-	demo_homepage.select_category_by_name("Accessories")
+	demo_homepage.select_random_category
 	demo_category.click_add_button(0)
 	wait_time(2)
 end
@@ -46,7 +46,7 @@ end
 
 Given("I have more than one item in my basket") do
 	demo_homepage.hover_product_categories
-	demo_homepage.select_category_by_name("Accessories")
+	demo_homepage.select_random_category
 	demo_category.click_add_button(0)
 	demo_category.click_add_button(1)
 	wait_time(5)

@@ -4,13 +4,14 @@ end
 
 Given("I add an item to cart") do
     demo_homepage.hover_product_categories
-    demo_homepage.select_category_by_name("iPhones")
+    demo_homepage.select_random_category
     demo_category.click_add_button(0)
     wait_time(5)
 end
 
 When("I submit the checkout form") do
     demo_homepage.visit_checkout_cart
+    wait_time(5)
     demo_checkout.click_checkout_your_cart_continue_button
     demo_checkout.click_checkout_info_purchase_button
 end
@@ -26,9 +27,13 @@ end
 Given("I am on the checkout page") do
     demo_homepage.visit_homepage
     demo_homepage.hover_product_categories
-    demo_homepage.select_category_by_name("iPhones")
+    demo_homepage.select_random_category
     demo_category.click_add_button(0)
     demo_homepage.visit_checkout_cart
+    @wait_time = wait_time(10)
+    @wait_time.until {
+      page.has_css?("a.step2")
+    }
     demo_checkout.click_checkout_your_cart_continue_button
 end
 
@@ -50,5 +55,5 @@ When("I submit the form") do
 end
 
 Then("I should receive the confirmation") do
-  expect(checkout.checkout_confirmation).to eq 'Thank you, your purchase is pending. You will be sent an email once the order clears.'
+  expect(demo_checkout.checkout_confirmation).to eq 'Thank you, your purchase is pending. You will be sent an email once the order clears.'
 end

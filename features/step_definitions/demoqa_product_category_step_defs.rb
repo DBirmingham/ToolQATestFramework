@@ -6,32 +6,35 @@ When("I click on a product category") do
 end
 
 Then("I should get a list of items that match the category") do
-    expect(category.check_url).to include @product_cat.downcase
-    expect(category.check_if_on_a_product_cat_page).to eq @product_cat
+    expect(demo_category.check_url.path).to include @product_cat.downcase
+    expect(demo_category.check_if_on_a_product_cat_page).to eq @product_cat
 end
 
 Given("I am on the product category page") do
     demo_homepage.visit_homepage
     demo_homepage.hover_product_categories
-    demo_homepage.select_category_by_name("iMacs")
+    demo_homepage.select_random_category
 end
 
 When("I click on Add item") do
     demo_category.click_add_button(0)
-    wait_time(5)
 end
 
 Then("I should see the item count in the basket increment") do
+    @wait_time = wait_time(10)
+    @wait_time.until{
+      demo_category.find_checkout_number > 0
+    }
     expect(demo_category.find_checkout_number).to be > 0
 end
 
 When("I click on a blog post") do
-    @post = homepage.get_name_of_blog_post(2)
-    homepage.click_blog_post(2)
+    @post = demo_homepage.get_name_of_blog_post(2)
+    demo_homepage.click_blog_post(2)
   end
 
 Then("I should view the correct blog post") do
-    expect(category.get_blog_post_title).to eq @post
+    expect(demo_category.get_blog_post_title).to eq @post
 end
 
 Given('I am in the list view list') do
