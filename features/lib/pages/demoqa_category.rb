@@ -5,6 +5,8 @@ class DemoQaCategory
 
     attr_accessor :first_item_on_category_list, :blog_product_id, :list_view_id, :grid_view_id, :grid_button_id, :list_button_id
 
+    ITEMS_IN_GRID_AND_LIST_VIEW = 'product_view_32', 'product_view_40', 'product_view_64'
+
     def initialize
       @first_item_on_category_list = 'Accessories'
       @blog_product_id = 'single_product_page_container'
@@ -73,4 +75,14 @@ class DemoQaCategory
         end
       end
     end
+
+    def list_and_grid_items
+      array = []
+      page.all(:css, "h2.prodtitle").each do |item|
+        array << item.text
+      end
+      array
+    end
+
+
 end

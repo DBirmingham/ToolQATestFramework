@@ -57,13 +57,19 @@ Then('the product should be displayed in the grid view') do
   category.view_grid_view
   expect(category.check_view_title).to eq 'Product Category'
   expect(category.check_item_in_grid).to eq '132px'
+  expect(category.list_and_grid_items).to eq @view_items_list
 end
 
 And('I am in the list view list') do
-  category.view_list_view
+  @category_list = category
+  @category_list.view_list_view
+  @view_items_list = @category_list.list_and_grid_items
 end
 
 And('I am in the grid view list') do
+  @category_grid = category
+  @category_grid.view_list_view
+  @view_items_grid = @category_grid.list_and_grid_items
   category.grid_view
 end
 
@@ -75,5 +81,5 @@ Then('the product should be displayed in the list view') do
   category.view_list_view
   expect(category.check_view_title).to eq 'Product Category'
   expect(category.check_item_in_list).to eq '660px'
-
+  expect(category.list_and_grid_items).to eq @view_items_grid
 end
