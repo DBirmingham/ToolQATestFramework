@@ -7,6 +7,8 @@ class GmailHomepage
     GMAIL_USERNAME = "identifierId"
     GMAIL_PASSWORD = "password"
     NEXT_BUTTON_ID = "identifierNext"
+    URL_SPAM = 'https://mail.google.com/mail/u/0/#spam'
+    SEARCH_ID = 'gbqfq'
 
     def visit_home_page
         visit(URL)
@@ -29,9 +31,21 @@ class GmailHomepage
     end
 
     def click_on_more
-        within(:id, ':3j') do
+        # within(:id, ':3j') do
             find(:css, 'span.CJ').click
-        end
+        # end
+    end
+
+    # def go_to_spam(path)
+    #     visit()
+    # end
+
+    def fill_in_search_with_spam(spam_text)
+        fill_in(SEARCH_ID, :with => spam_text )
+    end
+
+    def click_search
+        find(:id, "gbqfb").click
     end
 
     def click_spam_email
@@ -46,8 +60,12 @@ class GmailHomepage
 
     def click_on_confirmation_link
         within(:css, 'div.a3s') do
-            find('a').click
+            @confirmation_link = find('a').text
         end
+    end
+
+    def visit_password_set_page
+        visit(@confirmation_link)
     end
 
 

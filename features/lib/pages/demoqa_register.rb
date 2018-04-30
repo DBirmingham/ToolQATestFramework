@@ -8,6 +8,7 @@ class Register
     EMAIL_ID = 'user_email'
     REGISTER_BUTTON = 'wp-submit'
     RESET_PASSWORD = 'pass1-text'
+    RESET_CONFIRMATION = 'wp-submit'
     RESET_BUTTON = 'wp-submit'
 
     def navigate_register_page
@@ -37,12 +38,20 @@ class Register
     end
 
     def click_reset_password
-        click_button(RESET_PASSWORD)
+        click_button(RESET_CONFIRMATION)
     end
 
     def account_confirmation_message
         within(:id, 'login') do
             find(:css, 'p.reset-pass').text
+        end
+    end
+
+    def check_register_link
+        within(:css, 'body.login') do 
+            within(:css, 'div#login') do
+                find(:css, 'p.message').text
+            end
         end
     end
 
