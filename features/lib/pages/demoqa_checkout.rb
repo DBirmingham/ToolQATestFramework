@@ -12,16 +12,15 @@ class Checkout
 	EMPTY_BASKET_MESSAGE = "div.entry-content"
 	CHECKOUT_PROGRESS_INFO = 'Continue'
 	CHECKOUT_PROGRESS_FINAL = 'Purchase'
-<<<<<<< HEAD
-=======
-	# EMAIL_MESSAGE = 'email'
+
+	EMAIL_MESSAGE = 'email'
 	FIRST_NAME_MESSAGE = 'first name'
 	LAST_NAME_MESSAGE = 'last name'
 	ADDRESS_MESSAGE = 'address'
 	CITY_MESSAGE = 'city'
 	COUNTRY_MESSAGE = 'country'
 	PHONE_MESSAGE = 'phone'
->>>>>>> checkout_success
+
 	ERROR_FIELD_MESSAGE = 'wpsc_error_msg_field_name'
 	EMAIL_FIELD = 'wpsc_checkout_form_9'
 	FIRST_NAME_FIELD = 'wpsc_checkout_form_2'
@@ -156,9 +155,7 @@ class Checkout
 
 	def fill_in_country(value)
 		find(:id, COUNTRY_DROPDOWN).find(:xpath, value).click
-
 	end
-
 
 	def fill_in_post_code(post_code)
 		fill_in(POSTAL_CODE, with: post_code)

@@ -1,64 +1,193 @@
-# DemoQA E-Commerce Website
+# DemoQA E-Commerce 
 
-A project involving testing an ecommerce site using Behaviour-Driven development (BDD). We have
-used an agile team methodology to track progress, assign roles and distribute the work evenly.
+A Test Framework for the DemoQA site ([http://store.demoqa.com/](http://store.demoqa.com/)). 
 
-The UI Tests were created and automated according to the requirements given by the stakeholder.  
-User Stories and features were managed using Trello.
+## What's being Delivered?
 
-The automation testing framework was built using Cucumber based on the selenium webdriver with Capybara.
+### 24 User Journeys
+###  18 User Stories 
+###  12 High Priority Journeys tested
+### 19 Journeys written in Gherkin syntax
+###  70 tests
+###  Maintanable and reusable testing framework (POM)
+###  Documentation for adding more tests
+### Improved regression test time: 3 Minutes
 
-## Contents
+## Requirements
 
-- [Quickstart](#quickstart)
-- [Tests](#tests)
-- [Project Requirements](#project-requirements)
-- [Sprints](#sprints)
-- [Using Cucumber](#using-cucumber)
+The requirements were to test the following pages and features:
 
-## Quickstart
+Priority Key : **High Priority (HP), Low Priority (LP)**
 
-### Install
-
-Clone this repo to your personal computer and ensure you have the necessary gems installed within your root folder. In your terminal enter
-
-```
-gem install selenium-webdriver
-gem install capybara
-gem install cucumber
-```
-
-## Tests
-
-### Examples
-
-## Project Requirements
-
-Test coverage of the following:
-
-* Registration
-* Signing in
-* Lost Password
-* Checkout and Basket
-* Blog
-* Product Category
+* Registration (HP)
+* Signing in (LP)
+* Lost Password (LP)
+* Checkout and Basket (HP)
+* Blog (HP)
+* Product Category (HP)
 	- Accessories
 	- iMacs
 	- iPads
 	- iPhones
 	- iPods
 	- MacBooks
-* Adding to cart
-* Search
-* Product Pages 
+* Adding to cart (HP)
+* Search (LP)
+* Product Pages (HP)
 	- Grid
 	- List
 	- FaceBook likes
 
+Priority for testing was decided according to stakeholder testing prioritisation.  
+
+### Behaviour Driven Development
+ Provided a bridge language for the bussiness and tech teams to work from
+
+ 
+### Page Object Model (POM) 
+ created a maintainable and reusable test framework 
+
+## Quickstart
+### Install
+
+Clone this repo to your personal computer using the terminal:
+
+```
+https://github.com/spartaglobal/ToolQATestFramework.git
+
+```
+ Then once you are in the root folder, in your terminal enter:
+
+```
+bundle
+To run the test just type "cucumber"
+
+```
+### Adding new tests
+
+To create a test for a scenario, you create a new .feature file. Next, scenarios must be added inside the feature file. Finally, run cucumber on the terminal. 
+
+Example:
+
+```
+Feature: Homepage 
+Scenario: If I submit a valid email and correctly follow the sequential steps then I should be successfully registered.
+
+        Given I visit the homepage
+        And I navigate to the register page
+        When I submit a valid email and username
+        Then Receive the confirmation message
+```
+Once you run cucumber, the terminal will generate a step definition that you can use to run your tests. Any auto-generated _"And"_ must be changed to an appropriate _"Given"_, _"When"_, or _"Then"_. 
+
+```
+Given("I visit the homepage") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given("I navigate to the register page") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When("I submit a valid email and username") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("Receive the confirmation message") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+```
+
+### POM Ruby files and internal methods
+
+Each class was divided up into different files with names that are easy to map:
+
+```
+demoqa_category.rb 
+demoqa_checkout.rb
+demoqa_homepage.rb
+demoqa_register.rb
+```
+Two Super classes 
+
+```
+demoqa_site.rb
+gmail_site.rb
+```
+#### class DemoQaCategory example of the methods:
+
+This class is in the demoqa_category.rb 
+
+```
+find_category_name_and_product_name 
+view_product_category_from_blog_post
+view_grid_view
+view_list_view
+```
+
+## Tests
+
+### Examples
+```
+@test_checkout_form_empty
+  Scenario: Testing the error messages in the purchase form # features/demoqa_checkout_form.feature:10
+    Given I am on the demo home page                        # features/step_definitions/demoqa_checkout_form_step_defs.rb:1
+    And I add an item to cart                               # features/step_definitions/demoqa_checkout_form_step_defs.rb:5
+    When I submit the form                                  # features/step_definitions/demoqa_checkout_form_step_defs.rb:12
+    And I got back to the checkout form                     # features/step_definitions/demoqa_checkout_form_step_defs.rb:22
+    Then I should receive the correct error message         # features/step_definitions/demoqa_checkout_form_step_defs.rb:26
+
+1 scenario (1 passed)
+5 steps (5 passed)
+0m32.132s
+```
+
+```
+@product_view_grid
+  Scenario: If I click on grid view on a product page the items should be displayed correctly in grid view. # features/demoqa_product_view.feature:4
+    Given I am on the product category page                                                                 # features/step_definitions/demoqa_product_category_step_defs.rb:41
+    And I am in the list view list                                                                          # features/step_definitions/demoqa_product_category_step_defs.rb:60
+    When I select grid view                                                                                 # features/step_definitions/demoqa_product_category_step_defs.rb:50
+    Then the product should be displayed in the grid view                                                   # features/step_definitions/demoqa_product_category_step_defs.rb:54
+
+1 scenario (1 passed)
+4 steps (4 passed)
+0m12.031s
+
+```
+## User Journeys
+These are the user journeys gathered from navigating the DemoQA website.
+
+```
+1)	Homepage – My Account – Register – Username – Email – Register
+2)	Homepage – My Account – Register – Wrong Username – Right Email – Register – Error
+3)	Homepage – My Account – Register – Wrong Username – Wrong Email – Register – Error
+4)	Homepage – My Account – Register – Right Username – Wrong Email – Register - Error
+5)	Homepage – Wrong Username/Email – Wrong Password – Login – Lost Password? – Username/email – Error message – Email Sent
+6)	Homepage – More details – Blog Post
+7)	Homepage – Product Category – Ipad, Iphone , MacBook – Rating 
+8)	Homepage – Product Category – Iphone – Select Item – Add to Cart – Confirm Message – Go to Cart – Check Item Is In Cart
+9)	Homepage – All product – Grid
+10)	Homepage – All products – product – Like – Redirect to FB 
+11)	Homepage – Product category – Iphone – Product – Like – Redirect to FB 
+12)	Homepage – My Account – Log in – Correct Username – Correct Password – Logged In 
+13)	Homepage – My Account – Log in – Invalid Username – Invalid Username message
+14)	Homepage – My Account – Log in – Empty Username – Empty Username message
+15)	Homepage – My Account – Log in – Correct Username – Invalid Password – Invalid Password Message 
+16)	Homepage – My Account – Log in – Correct Username – Empty Password – Empty Password Message
+17)	Homepage – Search Bar – Match Product Name – Click product – Show Product 
+18)	Homepage – Search Bar – Match Product Name – Error Message
+19)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Valid Details – Purchase confirmation 
+20)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Missing details – Error Message 
+21)	Homepage – Basket with Items – Show – Update – Remove – Checkout (While Logged in) – Account Details
+22)	Homepage – Hover Product Category + Click on – Accessories (Imac, Ipod) – Add to Cart
+23)	Homepage – Hover Product Category + Click on – Accessories (Imac, Ipod) – Display (List) – Rate/Like (Displayed)
+24)	Homepage – Hover product category + Click on – Accessories (Imac, Ipod) – Click item – Item details – Add To The Cart 
+```
 ## Sprints 
 
-### Sprint 1 - 12.00 pm 24 April 2018 - 3.00 pm 26 April 2018
-Tests written for the highest priority user journey: purchase an item.
+### Sprint 1 - 12:00 pm 24th April 2018 - 3:00 pm 26th April 2018
+Tests written for the highest priority, i.e: user journey: purchase an item.
 This included 8 user stories:
 
 **(1)** As a User, I want to be able to successfully purchase the items in my basket.
@@ -133,8 +262,45 @@ And I have only one item in my basket
 When When I click remove
 Then I receive the correct error
 ```
+### Sprint 2 - 09:00 am 27th April 2018 - 3:00 pm 30th April 2018
+These are the user stories that have been worked on in the second sprint:
 
-## Using Cucumber
-Write feature files using GWT Gherkin syntax. A guide to this can be found here.
+**(1)**  As a User, I want to successfully register so that I can have an account.
+```Cucumber
+Given I am on the homepage
+And I navigate to the register page
+When I submit a valid email and username
+Then Receive the confirmation message
+```
+```Cucumber
+Given I am on the email homepage
+And Successfully logged in
+When I click the confirmation email
+Then I navigate to the password creating page
+```
+```Cucumber
+Given I am on the password creating page
+When I submit the valid password
+Then My account should be successfully created
+```
 
-Navigate to the root of the project and run the cucumber command. This will read through all of the feature files and print out template step definitions. You can then use the POM to access and manipulate elements on the page.
+**(2)**  As a User, I want to be able to see the products in a grid or list view.
+```Cucumber
+Given I am on the product category page
+And I am in the list view grid
+When I select grid view
+Then the product should be displayed in the grid view
+```
+```Cucumber
+Given I am on the product category page
+And I am in the list view list
+When I select list view
+Then the product should be displayed in the list view
+```
+**(3)**  As a User, I want to be able to successfully purchase the items in my basket.
+```Cucumber
+Given: I am on the checkout page.
+And: I input the correct details.
+When: I submit the form.
+Then: I should receive the confirmation.
+```

@@ -17,7 +17,7 @@ class DemoQaCategory
 
     def check_url
 		URI.parse(current_url)
-	end
+	  end
 
     def find_checkout_number
         within(:id, "header_cart") do
@@ -35,8 +35,6 @@ class DemoQaCategory
         find_by_id(BLOG_PRODUCT_ID)
     end
 
-<<<<<<< HEAD
-=======
     def view_grid_view
       find_by_id(GRID_VIEW)
     end
@@ -72,6 +70,4 @@ class DemoQaCategory
         end
       end
     end
-
->>>>>>> demoqa_grid_list_view
 end

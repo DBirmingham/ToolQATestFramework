@@ -1,5 +1,3 @@
-
-
 Given("I am on the home page.") do
     homepage.visit_homepage
 end

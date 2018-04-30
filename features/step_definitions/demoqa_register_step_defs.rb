@@ -14,7 +14,6 @@ Then("Receive the confirmation message") do
   expect(register.register_confirmation_message).to eq 'Registration complete. Please check your email.'
 end
 
-
 Given("I am on the email homepage") do
   gmail_homepage.visit_home_page
   gmail_homepage.fill_in_username("spartaglobaltest2@gmail.com")

@@ -21,7 +21,7 @@ class Homepage
 	end
 
 	def click_blog_post
-		 click_link(BLOG_POST_LINK)
+		click_link(BLOG_POST_LINK)
  	end
 
 	def click_on_product_category
