@@ -16,7 +16,7 @@ end
 
 When("I click on Add item") do
     demo_category.click_add_button(0)
-    sleep 5
+    wait_time(5)
 end
 
 Then("I should see the item count in the basket increment") do

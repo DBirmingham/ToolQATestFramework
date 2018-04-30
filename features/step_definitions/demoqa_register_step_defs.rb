@@ -23,7 +23,7 @@ Given("I am on the email homepage") do
     gmail_homepage.click_spam_email
     gmail_homepage.click_on_email
     gmail_homepage.click_on_confirmation_link
-    sleep 4
+    wait_time(4)
 end
 
 Given("I successfully logged in") do

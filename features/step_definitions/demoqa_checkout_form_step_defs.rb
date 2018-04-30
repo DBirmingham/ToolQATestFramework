@@ -6,7 +6,7 @@ Given("I add an item to cart") do
     demo_homepage.hover_product_categories
     demo_homepage.select_category_by_name("iPhones")
     demo_category.click_add_button(0)
-    sleep 5
+    wait_time(5)
 end
 
 When("I submit the checkout form") do

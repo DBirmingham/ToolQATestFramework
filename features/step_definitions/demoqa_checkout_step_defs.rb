@@ -2,7 +2,7 @@ Given("I have an item in my basket") do
 	demo_homepage.hover_product_categories
 	demo_homepage.select_category_by_name("Accessories")
 	demo_category.click_add_button(0)
-	sleep 2
+	wait_time(2)
 end
 
 Then("I receive a list of items in the basket") do
@@ -49,7 +49,7 @@ Given("I have more than one item in my basket") do
 	demo_homepage.select_category_by_name("Accessories")
 	demo_category.click_add_button(0)
 	demo_category.click_add_button(1)
-	sleep 5
+	wait_time(5)
 end
 
 Then("The item should be removed from the basket") do
