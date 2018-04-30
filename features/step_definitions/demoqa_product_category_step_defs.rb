@@ -34,6 +34,12 @@ Then("I should view the correct blog post") do
     expect(category.get_blog_post_title).to eq @post
 end
 
+Given('I am in the list view list') do
+  @category_list = demo_category
+  @category_list.view_list_view
+  @view_items_list = @category_list.list_and_grid_items
+end
+
 When('I select grid view') do
     demo_category.grid_view
 end
@@ -42,6 +48,13 @@ Then('the product should be displayed in the grid view') do
     demo_category.view_grid_view
     expect(demo_category.check_view_title).to eq @product_cat
     expect(demo_category.check_item_in_grid).to eq '132px'
+    expect(demo_category.list_and_grid_items).to eq @view_items_list
+end
+
+Given('I am in the grid view list') do
+  @category_grid = demo_category
+  @category_grid.view_list_view
+  @view_items_grid = @category_grid.list_and_grid_items
 end
 
 When('I select list view') do
@@ -52,4 +65,5 @@ Then('the product should be displayed in the list view') do
     demo_category.view_list_view
     expect(demo_category.check_view_title).to eq @product_cat
     expect(demo_category.check_item_in_list).to eq '660px'
+    expect(demo_category.list_and_grid_items).to eq @view_items_grid
 end

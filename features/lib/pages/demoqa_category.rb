@@ -77,8 +77,18 @@ class DemoQaCategory
     def check_if_on_a_product_cat_page
         find('h1', text: product_category).text
     end
-  
+
     def get_blog_post_title
         find(:css, "h1.prodtitle").text
     end
+
+    def list_and_grid_items
+      array = []
+      page.all(:css, "h2.prodtitle").each do |item|
+        array << item.text
+      end
+      array
+    end
+
+
 end

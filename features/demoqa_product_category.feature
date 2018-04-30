@@ -26,6 +26,7 @@ Feature: Category Add item
 
         Given I visit the DemoQA homepage
         And I click on a product category
+        And I am in the list view list
         When I select grid view
         Then the product should be displayed in the grid view
 
@@ -34,5 +35,6 @@ Feature: Category Add item
 
         Given I visit the DemoQA homepage
         And I click on a product category
+        And I am in the grid view list
         When I select list view
         Then the product should be displayed in the list view
