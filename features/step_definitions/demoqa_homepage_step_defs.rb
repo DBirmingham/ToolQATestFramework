@@ -1,25 +1,25 @@
-Given("I visit the homepage") do
-  homepage.visit_homepage
+Given("I visit the DemoQA homepage") do
+  	demo_homepage.visit_homepage
+end
+
+Then("I am on the DemoQA homepage") do
+  	expect(demo_homepage.check_url.path).to eq '/'
+  	expect(demo_homepage.check_url.host).to eq 'store.demoqa.com'
 end
 
 When("I click on the checkout cart") do
-  homepage.visit_checkout_cart
-end
-
-When("I hover over Products Categories and I click on the categories list option") do
-  homepage.hover_product_categories
-  homepage.select_category_by_name("Accessories")
-end
-
-Then("I am on the homepage") do
-  expect(homepage.check_url.path).to eq '/'
-  expect(homepage.check_url.host).to eq 'store.demoqa.com'
+  	demo_homepage.visit_checkout_cart
 end
 
 Then("I am on the cart page") do
-  expect(checkout.check_url.path).to include 'checkout'
+  	expect(demo_checkout.check_url.path).to include 'checkout'
+end
+
+When("I hover over Products Categories and I click on the categories list option") do
+  	demo_homepage.hover_product_categories
+  	demo_homepage.select_category_by_name("Accessories")
 end
 
 Then("I am on the accessories page") do
-  expect(checkout.check_url.path).to include 'accessories'
+  	expect(demo_checkout.check_url.path).to include 'accessories'
 end

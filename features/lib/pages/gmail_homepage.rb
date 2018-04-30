@@ -60,9 +60,13 @@ class GmailHomepage
             @confirmation_link = find('a').text
         end
     end
+<<<<<<< HEAD
 
     def visit_password_set_page
         visit(@confirmation_link)
     end
 
 end
+=======
+end
+>>>>>>> indent_and_spacing
