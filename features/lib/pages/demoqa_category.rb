@@ -73,4 +73,12 @@ class DemoQaCategory
             end
         end
     end
+
+    def check_if_on_a_product_cat_page
+        find('h1', text: product_category).text
+    end
+  
+    def get_blog_post_title
+        find(:css, "h1.prodtitle").text
+    end
 end

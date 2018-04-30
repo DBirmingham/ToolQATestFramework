@@ -164,4 +164,8 @@ class DemoQaCheckout
 			find('p').text
 		end
 	end
+
+	def check_if_on_cart_page
+        find('h1', text: @checkout).text
+    end
 end
