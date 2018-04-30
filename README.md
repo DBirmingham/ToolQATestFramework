@@ -1,11 +1,11 @@
-# DemoQA E-Commerce 
+# DemoQA E-Commerce
 
-A Test Framework for the DemoQA site ([http://store.demoqa.com/](http://store.demoqa.com/)). 
+A Test Framework for the DemoQA site ([http://store.demoqa.com/](http://store.demoqa.com/)).
 
 ## What's being Delivered?
 
 ### 24 User Journeys
-###  18 User Stories 
+###  18 User Stories
 ###  12 High Priority Journeys tested
 ### 19 Journeys written in Gherkin syntax
 ###  70 tests
@@ -43,9 +43,9 @@ Priority for testing was decided according to stakeholder testing prioritisation
 ### Behaviour Driven Development
  Provided a bridge language for the bussiness and tech teams to work from
 
- 
-### Page Object Model (POM) 
- created a maintainable and reusable test framework 
+
+### Page Object Model (POM)
+ created a maintainable and reusable test framework
 
 ## Quickstart
 ### Install
@@ -65,12 +65,12 @@ To run the test just type "cucumber"
 ```
 ### Adding new tests
 
-To create a test for a scenario, you create a new .feature file. Next, scenarios must be added inside the feature file. Finally, run cucumber on the terminal. 
+To create a test for a scenario, you create a new .feature file. Next, scenarios must be added inside the feature file. Finally, run cucumber on the terminal.
 
 Example:
 
-```
-Feature: Homepage 
+```Cucumber
+Feature: Homepage
 Scenario: If I submit a valid email and correctly follow the sequential steps then I should be successfully registered.
 
         Given I visit the homepage
@@ -78,7 +78,7 @@ Scenario: If I submit a valid email and correctly follow the sequential steps th
         When I submit a valid email and username
         Then Receive the confirmation message
 ```
-Once you run cucumber, the terminal will generate a step definition that you can use to run your tests. Any auto-generated _"And"_ must be changed to an appropriate _"Given"_, _"When"_, or _"Then"_. 
+Once you run cucumber, the terminal will generate a step definition that you can use to run your tests. Any auto-generated _"And"_ must be changed to an appropriate _"Given"_, _"When"_, or _"Then"_.
 
 ```
 Given("I visit the homepage") do
@@ -102,24 +102,24 @@ end
 
 Each class was divided up into different files with names that are easy to map:
 
-```
-demoqa_category.rb 
+```Ruby
+demoqa_category.rb
 demoqa_checkout.rb
 demoqa_homepage.rb
 demoqa_register.rb
 ```
-Two Super classes 
+Two Super classes
 
-```
+```Ruby
 demoqa_site.rb
 gmail_site.rb
 ```
 #### class DemoQaCategory example of the methods:
 
-This class is in the demoqa_category.rb 
+This class is in the demoqa_category.rb
 
-```
-find_category_name_and_product_name 
+```Ruby
+find_category_name_and_product_name
 view_product_category_from_blog_post
 view_grid_view
 view_list_view
@@ -165,26 +165,26 @@ These are the user journeys gathered from navigating the DemoQA website.
 4)	Homepage – My Account – Register – Right Username – Wrong Email – Register - Error
 5)	Homepage – Wrong Username/Email – Wrong Password – Login – Lost Password? – Username/email – Error message – Email Sent
 6)	Homepage – More details – Blog Post
-7)	Homepage – Product Category – Ipad, Iphone , MacBook – Rating 
+7)	Homepage – Product Category – Ipad, Iphone , MacBook – Rating
 8)	Homepage – Product Category – Iphone – Select Item – Add to Cart – Confirm Message – Go to Cart – Check Item Is In Cart
 9)	Homepage – All product – Grid
-10)	Homepage – All products – product – Like – Redirect to FB 
-11)	Homepage – Product category – Iphone – Product – Like – Redirect to FB 
-12)	Homepage – My Account – Log in – Correct Username – Correct Password – Logged In 
+10)	Homepage – All products – product – Like – Redirect to FB
+11)	Homepage – Product category – Iphone – Product – Like – Redirect to FB
+12)	Homepage – My Account – Log in – Correct Username – Correct Password – Logged In
 13)	Homepage – My Account – Log in – Invalid Username – Invalid Username message
 14)	Homepage – My Account – Log in – Empty Username – Empty Username message
-15)	Homepage – My Account – Log in – Correct Username – Invalid Password – Invalid Password Message 
+15)	Homepage – My Account – Log in – Correct Username – Invalid Password – Invalid Password Message
 16)	Homepage – My Account – Log in – Correct Username – Empty Password – Empty Password Message
-17)	Homepage – Search Bar – Match Product Name – Click product – Show Product 
+17)	Homepage – Search Bar – Match Product Name – Click product – Show Product
 18)	Homepage – Search Bar – Match Product Name – Error Message
-19)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Valid Details – Purchase confirmation 
-20)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Missing details – Error Message 
+19)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Valid Details – Purchase confirmation
+20)	Homepage – Basket With Items – Show – Update – Remove – Checkout – Click continue – Checkout Form – Missing details – Error Message
 21)	Homepage – Basket with Items – Show – Update – Remove – Checkout (While Logged in) – Account Details
 22)	Homepage – Hover Product Category + Click on – Accessories (Imac, Ipod) – Add to Cart
 23)	Homepage – Hover Product Category + Click on – Accessories (Imac, Ipod) – Display (List) – Rate/Like (Displayed)
-24)	Homepage – Hover product category + Click on – Accessories (Imac, Ipod) – Click item – Item details – Add To The Cart 
+24)	Homepage – Hover product category + Click on – Accessories (Imac, Ipod) – Click item – Item details – Add To The Cart
 ```
-## Sprints 
+## Sprints
 
 ### Sprint 1 - 12:00 pm 24th April 2018 - 3:00 pm 26th April 2018
 Tests written for the highest priority, i.e: user journey: purchase an item.
@@ -201,7 +201,7 @@ Then I should receive the confirmation.
 ```Cucumber
 Given I select a product category.
 When I click on a category.
-Then I should get a list of items that match the category. 
+Then I should get a list of items that match the category.
 ```
 **(3)** As a User, I want to be able to view the items in my basket.
 ```Cucumber
@@ -219,7 +219,7 @@ Then  I should get the correct error message.
 ```
 **(5)** As a User, I want to be able to view a blog post.
 ```Cucumber
-Given I am on the home page. 
+Given I am on the home page.
 When I click on a blog post.
 Then I should view the correct blog post.
 ```
@@ -228,14 +228,14 @@ Then I should view the correct blog post.
 Given I am on the checkout page.
 And I input no details.
 When I submit the form.
-And I got back to the checkout form. 
+And I got back to the checkout form.
 Then I should receive the correct error message.
 ```
 **(7)** As a User, I want to be able to add items to my basket.
 ```Cucumber
-Given I on the product category page. 
+Given I on the product category page.
 When When I click on Add item.
-Then I should see the item count in the basket increment. 
+Then I should see the item count in the basket increment.
 ```
 **(8)** As a User, I want to be able to show/update/remove items in my basket.
 ```Cucumber
