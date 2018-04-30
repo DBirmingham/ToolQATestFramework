@@ -17,7 +17,7 @@ Given("I am on the email homepage") do
     gmail_homepage.visit_home_page
 end
 
-Given("Successfully logged in") do
+Given("I successfully logged in") do
     gmail_homepage.fill_in_username("spartaglobaltest4@gmail.com")
     gmail_homepage.click_next_after_inputing_username
     gmail_homepage.fill_in_password('Password!123')
@@ -45,6 +45,6 @@ When("I submit the valid password") do
     demo_register.click_reset_password
 end
 
-Then("My account should be successfully created") do
+Then("I should have successfully created an account") do
     expect(demo_register.account_confirmation_message).to eq 'Your password has been reset. Log in'
 end

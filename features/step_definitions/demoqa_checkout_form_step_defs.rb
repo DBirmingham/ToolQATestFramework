@@ -49,6 +49,6 @@ When("I submit the form") do
     demo_checkout.click_checkout_info_purchase_button
 end
 
-Then("I should receive the confirmation.") do
+Then("I should receive the confirmation") do
   expect(checkout.checkout_confirmation).to eq 'Thank you, your purchase is pending. You will be sent an email once the order clears.'
 end
