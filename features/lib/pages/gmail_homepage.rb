@@ -52,8 +52,4 @@ class GmailHomepage
             find('a').click
         end
     end
-
-
-
-
 end

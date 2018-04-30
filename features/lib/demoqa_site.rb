@@ -3,23 +3,21 @@ require_relative 'pages/demoqa_checkout'
 require_relative 'pages/demoqa_category'
 require_relative 'pages/demoqa_register'
 
-
 module DemoSite
 
-	def homepage
-		Homepage.new
+	def demo_homepage
+		DemoQaHomepage.new
 	end
 
-	def checkout
-		Checkout.new
+	def demo_checkout
+		DemoQaCheckout.new
 	end
 
-	def category
+	def demo_category
 		DemoQaCategory.new
 	end
 
-	def register
-		Register.new
+	def demo_register
+		DemoQaRegister.new
 	end
-
 end

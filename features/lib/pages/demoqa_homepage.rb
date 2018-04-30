@@ -1,6 +1,6 @@
 require 'capybara/dsl'
 
-class Homepage
+class DemoQaHomepage
 	include Capybara::DSL
 
 	attr_accessor :homepage_url, :product_category_link_text, :checkout_cart_link_text, :my_account_link_text, :all_products_link_text, :blog_post_link_text
@@ -49,5 +49,5 @@ class Homepage
 	def check_url
 		URI.parse(current_url)
 	end
-
 end
+
