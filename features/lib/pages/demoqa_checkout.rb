@@ -143,7 +143,11 @@ class DemoQaCheckout
 	end
 
 	def fill_in_country(value)
+<<<<<<< HEAD
 		find(:id, @country_dropdown).find(:xpath, value).click
+=======
+		find(:id, COUNTRY_DROPDOWN).find(:xpath, value).click
+>>>>>>> feature_registration
 	end
 
 	def fill_in_post_code(post_code)
