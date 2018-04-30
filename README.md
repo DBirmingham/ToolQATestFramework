@@ -55,8 +55,8 @@ https://github.com/spartaglobal/ToolQATestFramework.git
  Then once you are in the root folder, in your terminal enter:
 
 ```
-bundle
-To run the test just type "cucumber"
+bundle install - to install the test plugins
+cucumber - to run tests
 
 ```
 ### Adding new tests
