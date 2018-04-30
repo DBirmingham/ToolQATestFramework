@@ -1,14 +1,16 @@
 require 'capybara/dsl'
 
 class GmailHomepage
-    include Capybara::DSL
+    include Capybara::DSL 
 
-    attr_accessor :url, :gmail_username_id, :gmail_password_id
+        
+    attr_accessor :url, :gmail_username_id, :gmail_password_id, :search_id
 
-    def initalize
+    def intialize
         @url = "https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession"
         @gmail_username_id = "identifierId"
         @gmail_password_id = "password"
+        @search_id = 'gbqfq'
     end
 
     def visit_home_page
@@ -32,9 +34,15 @@ class GmailHomepage
     end
 
     def click_on_more
-        within(:id, ':3j') do
-            find(:css, 'span.CJ').click
-        end
+        find(:css, 'span.CJ').click
+    end
+
+    def fill_in_search_with_spam(spam_text)
+        fill_in(@search_id, :with => spam_text )
+    end
+
+    def click_search
+        find(:id, "gbqfb").click
     end
 
     def click_spam_email
@@ -49,11 +57,12 @@ class GmailHomepage
 
     def click_on_confirmation_link
         within(:css, 'div.a3s') do
-            find('a').click
+            @confirmation_link = find('a').text
         end
     end
 
-
-
+    def visit_password_set_page
+        visit(@confirmation_link)
+    end
 
 end
