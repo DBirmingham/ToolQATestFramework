@@ -1,9 +1,9 @@
 require 'capybara/dsl'
 
 class GmailHomepage
-    include Capybara::DSL 
+    include Capybara::DSL
 
-        
+
     attr_accessor :url, :gmail_username_id, :gmail_password_id, :search_id
 
     def intialize
@@ -19,7 +19,7 @@ class GmailHomepage
 
     def fill_in_username email
         fill_in(@gmail_username_id, :with => email )
-    end 
+    end
 
     def click_next_after_inputing_username
         find(:css, 'div#identifierNext').click
@@ -60,13 +60,9 @@ class GmailHomepage
             @confirmation_link = find('a').text
         end
     end
-<<<<<<< HEAD
 
     def visit_password_set_page
         visit(@confirmation_link)
     end
 
 end
-=======
-end
->>>>>>> indent_and_spacing
