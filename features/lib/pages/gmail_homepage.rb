@@ -3,7 +3,6 @@ require 'capybara/dsl'
 class GmailHomepage
     include Capybara::DSL
 
-
     attr_accessor :url, :gmail_username_id, :gmail_password_id, :search_id
 
     def intialize
