@@ -1,5 +1,3 @@
-
-
 Given("I am on the home page.") do
     homepage.visit_homepage
 end
@@ -21,7 +19,7 @@ Given("I on the product category page.") do
 
 When("I click on Add item.") do
     category.click_add_button(0)
-    sleep 5
+    wait_time(5)
 end
 
 Then("I should see the item count in the basket increment.") do

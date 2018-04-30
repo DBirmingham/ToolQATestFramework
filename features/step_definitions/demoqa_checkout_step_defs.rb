@@ -2,7 +2,7 @@ Given("I have an item in my basket") do
 	homepage.hover_product_categories
 	homepage.select_category_by_name("Accessories")
 	category.click_add_button(0)
-	sleep 2
+	wait_time(5)
 end
 
 Given("I have more than one item in my basket") do
@@ -10,7 +10,7 @@ Given("I have more than one item in my basket") do
 	homepage.select_category_by_name("Accessories")
 	category.click_add_button(0)
 	category.click_add_button(1)
-	sleep 2
+	wait_time(5)
 end
 
 Then("I receive a list of items in the basket") do

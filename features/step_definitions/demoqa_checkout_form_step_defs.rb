@@ -6,7 +6,7 @@ And("I add an item to cart") do
   homepage.hover_product_categories
   homepage.select_category_by_name("iPhones")
   category.click_add_button(0)
-  sleep 5
+  wait_time(5)
 end
 
 When("I submit the form") do
@@ -59,5 +59,4 @@ end
 
 Then("I should receive the confirmation.") do
   expect(checkout.checkout_confirmation).to eq 'Thank you, your purchase is pending. You will be sent an email once the order clears.' 
-  sleep 5
 end
