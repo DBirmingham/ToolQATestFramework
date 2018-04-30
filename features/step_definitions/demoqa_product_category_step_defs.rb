@@ -1,12 +1,11 @@
-When("I click on a product category.") do
-    demo_homepage.hover_product_categories
-    demo_homepage.categories.each do |category|
-        demo_homepage.select_category_by_name(category)
-        @product_cat = category
-    end
+When("I click on a product category") do
+    @demo_homepage = demo_homepage
+    @demo_homepage.hover_product_categories
+    @demo_homepage.select_random_category
+    @product_cat = @demo_homepage.selected_category
 end
 
-Then("I should get a list of items that match the category.") do
+Then("I should get a list of items that match the category") do
     expect(category.check_url).to include @product_cat.downcase
     expect(category.check_if_on_a_product_cat_page).to eq @product_cat
 end
@@ -41,7 +40,7 @@ end
 
 Then('the product should be displayed in the grid view') do
     demo_category.view_grid_view
-    expect(demo_category.check_view_title).to eq 'Accessories'
+    expect(demo_category.check_view_title).to eq @product_cat
     expect(demo_category.check_item_in_grid).to eq '132px'
 end
 
@@ -51,6 +50,6 @@ end
 
 Then('the product should be displayed in the list view') do
     demo_category.view_list_view
-    expect(demo_category.check_view_title).to eq 'Accessories'
+    expect(demo_category.check_view_title).to eq @product_cat
     expect(demo_category.check_item_in_list).to eq '660px'
 end

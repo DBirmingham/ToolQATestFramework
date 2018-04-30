@@ -19,7 +19,3 @@ When("I hover over Products Categories and I click on the categories list option
   	demo_homepage.hover_product_categories
   	demo_homepage.select_category_by_name("Accessories")
 end
-
-Then("I am on the accessories page") do
-  	expect(demo_checkout.check_url.path).to include 'accessories'
-end
