@@ -49,4 +49,13 @@ class DemoQaRegister
             find(:css, 'p.reset-pass').text
         end
     end
+
+    def check_register_link
+        within(:css, 'body.login') do 
+            within(:css, 'div#login') do
+                find(:css, 'p.message').text
+            end
+        end
+    end
+
 end

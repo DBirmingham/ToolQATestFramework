@@ -3,11 +3,12 @@ require 'capybara/dsl'
 class DemoQaCheckout
 	include Capybara::DSL
 
-	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation 
+	attr_accessor :quantity, :checkout_error_list, :empty_basket_message, :checkout_progress_info, :checkout_progress_final, :error_field_message, :email_field, :first_name_field, :last_name_field, :address_field, :city_field, :county_field, :country_dropdown, :postal_code, :phone_field, :shipping_address, :checkout_confirmation, :empty_basket_message_text, :checkout_confirmation_text, :first_name_sample, :last_name_sample, :address_sample, :email_sample, :city_sample, :country_sample_path, :post_code_sample, :county_sample, :phone_number_sample
 
 	def initialize
 		@checkout_error_list = ["Please enter a valid email.", "Please enter a valid first name.", "Please enter a valid last name.", "Please enter a valid address.", "Please enter a valid city.", "Please enter a valid country.", "Please enter a valid phone."]
 		@empty_basket_message = "div.entry-content"
+		@empty_basket_message_text = 'Oops, there is nothing in your cart.'
 		@checkout_progress_info = 'Continue'
 		@checkout_progress_final = 'Purchase'
 		@error_field_message = 'wpsc_error_msg_field_name'
@@ -20,8 +21,18 @@ class DemoQaCheckout
 		@country_dropdown = 'wpsc_checkout_form_7'
 		@postal_code = 'wpsc_checkout_form_8'
 		@phone_field = 'wpsc_checkout_form_18'
+		@first_name_sample = 'jose'
+		@last_name_sample = 'david'
+		@address_sample = '32 opulta'
+		@email_sample = 'joe@sparta.com'
+		@city_sample = 'london'
+		@country_sample_path = 'option[2]'
+		@post_code_sample = 'en5 23h'
+		@county_sample = 'hereford'
+		@phone_number_sample = '07942424525'
 		@shipping_address = 'shippingSameBilling'
 		@checkout_confirmation = 'content_container'
+		@checkout_confirmation_text = 'Thank you, your purchase is pending. You will be sent an email once the order clears.'
 	end
 
 	def check_checkout_error_message
@@ -164,4 +175,8 @@ class DemoQaCheckout
 			find('p').text
 		end
 	end
+
+	def check_if_on_cart_page
+        find('h1', text: @checkout).text
+    end
 end

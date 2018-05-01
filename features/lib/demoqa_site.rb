@@ -20,4 +20,9 @@ module DemoSite
 	def demo_register
 		DemoQaRegister.new
 	end
+
+	def wait_time num
+		Selenium::WebDriver::Wait.new(timeout: num)
+	end
+
 end

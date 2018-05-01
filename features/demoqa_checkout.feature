@@ -25,7 +25,7 @@ Feature: Checkout
 		And I click on the checkout cart
 		When I input a new quantity
 		And I click on the update
-		Then The total price should be update
+		Then The total price should be updated
 
 	@test_checkout_item_removable
 	Scenario: If I remove an item from the checkout page it should update accordingly

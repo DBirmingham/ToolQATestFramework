@@ -15,37 +15,36 @@ end
 
 Given("I am on the email homepage") do
     gmail_homepage.visit_home_page
-    gmail_homepage.fill_in_username("spartaglobaltest2@gmail.com")
-    gmail_homepage.click_next_after_inputing_username
-    gmail_homepage.fill_in_password('Password!123')
-    gmail_homepage.click_next_after_inputing_password
-    gmail_homepage.click_on_more
-    gmail_homepage.click_spam_email
-    gmail_homepage.click_on_email
-    gmail_homepage.click_on_confirmation_link
-    sleep 4
 end
 
 Given("I successfully logged in") do
-    pending # Write code here that turns the phrase above into concrete actions
+    gmail_homepage.fill_in_username("spartaglobaltest4@gmail.com")
+    gmail_homepage.click_next_after_inputing_username
+    gmail_homepage.fill_in_password('Password!123')
+    gmail_homepage.click_next_after_inputing_password
 end
 
 When("I click the confirmation email") do
-    pending # Write code here that turns the phrase above into concrete actions
+    gmail_homepage.click_on_more
+    gmail_homepage.click_spam_email
+    gmail_homepage.click_on_email
 end
 
 Then("I navigate to the password creating page") do
-    pending # Write code here that turns the phrase above into concrete actions
+    @gmail = gmail_homepage
+    @gmail.click_on_confirmation_link
 end
 
 Given("I am on the password creating page") do
-    pending # Write code here that turns the phrase above into concrete actions
+    @gmail.visit_password_set_page
+    expect(demo_register.check_register_link).to eq 'Enter your new password below.'
 end
 
 When("I submit the valid password") do
-    pending # Write code here that turns the phrase above into concrete actions
+    gmail_homepage.fill_in_password('Password!23456')
+    demo_register.click_reset_password
 end
 
 Then("I should have successfully created an account") do
-    pending # Write code here that turns the phrase above into concrete actions
+    expect(demo_register.account_confirmation_message).to eq 'Your password has been reset. Log in'
 end
