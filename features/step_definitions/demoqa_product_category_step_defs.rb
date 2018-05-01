@@ -55,9 +55,9 @@ Then('the product should be displayed in the grid view') do
 end
 
 Given('I am in the grid view list') do
-  @category_grid = demo_category
-  @category_grid.view_list_view
-  @view_items_grid = @category_grid.list_and_grid_items
+    @category_grid = demo_category
+    @category_grid.view_list_view
+    @view_items_grid = @category_grid.list_and_grid_items
 end
 
 When('I select list view') do

@@ -65,5 +65,4 @@ class GmailHomepage
     def visit_password_set_page
         visit(@confirmation_link)
     end
-
 end

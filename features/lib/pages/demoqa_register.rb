@@ -62,5 +62,4 @@ class DemoQaRegister
             end
         end
     end
-
 end
