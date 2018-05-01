@@ -50,7 +50,7 @@ When("I click remove") do
 end
 
 Then("I should get the correct error message on the checkout page") do
-	expect(demo_checkout.get_empty_basket_message).to eq demo_checkout.get_empty_basket_message_text
+	expect(demo_checkout.get_empty_basket_message).to eq demo_checkout.empty_basket_message_text
 end
 
 Given("I have more than one item in my basket") do
@@ -58,6 +58,7 @@ Given("I have more than one item in my basket") do
 	demo_homepage.select_random_category
 	demo_category.click_add_button(0)
 	demo_category.click_add_button(1)
+	@wait_time = wait_time(10)
     @wait_time.until{
       demo_category.find_checkout_number > 1
     }
