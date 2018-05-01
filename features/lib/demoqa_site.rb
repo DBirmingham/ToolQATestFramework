@@ -24,5 +24,4 @@ module DemoSite
 	def wait_time num
 		Selenium::WebDriver::Wait.new(timeout: num)
 	end
-
 end

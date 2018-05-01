@@ -55,5 +55,5 @@ When("I submit the form") do
 end
 
 Then("I should receive the confirmation") do
-  expect(demo_checkout.checkout_confirmation).to eq demo_checkout.checkout_confirmation_text
+    expect(demo_checkout.checkout_confirmation).to eq demo_checkout.checkout_confirmation_text
 end
