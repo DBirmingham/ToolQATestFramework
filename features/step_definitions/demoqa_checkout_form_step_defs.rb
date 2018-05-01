@@ -1,5 +1,5 @@
 Then ("I should get the correct error message") do
-    expect(demo_checkout.check_checkout_error_message).to eq 'Oops, there is nothing in your cart.'
+    expect(demo_checkout.check_checkout_error_message).to eq demo_checkout.empty_basket_message_text
 end
 
 Given("I add an item to cart") do
@@ -38,15 +38,15 @@ Given("I am on the checkout page") do
 end
 
 Given("I input the correct details") do
-    demo_checkout.fill_in_first_name('jose')
-    demo_checkout.fill_in_last_name('david')
-    demo_checkout.fill_in_address('32 opulta')
-    demo_checkout.fill_in_email('joe@sparta.com')
-    demo_checkout.fill_in_city('london')
-    demo_checkout.fill_in_country('option[2]')
-    demo_checkout.fill_in_post_code('en5 23h')
-    demo_checkout.fill_in_county('hereford')
-    demo_checkout.fill_in_phone('07942424525')
+    demo_checkout.fill_in_first_name(demo_checkout.first_name_sample)
+    demo_checkout.fill_in_last_name(demo_checkout.last_name_sample)
+    demo_checkout.fill_in_address(demo_checkout.address_sample)
+    demo_checkout.fill_in_email(demo_checkout.email_sample)
+    demo_checkout.fill_in_city(demo_checkout.city_sample)
+    demo_checkout.fill_in_country(demo_checkout.country_sample_path)
+    demo_checkout.fill_in_post_code(demo_checkout.post_code_sample)
+    demo_checkout.fill_in_county(demo_checkout.county_sample)
+    demo_checkout.fill_in_phone(demo_checkout.phone_number_sample)
     demo_checkout.fill_in_shipphing
 end
 
@@ -55,5 +55,5 @@ When("I submit the form") do
 end
 
 Then("I should receive the confirmation") do
-  expect(demo_checkout.checkout_confirmation).to eq 'Thank you, your purchase is pending. You will be sent an email once the order clears.'
+  expect(demo_checkout.checkout_confirmation).to eq demo_checkout.checkout_confirmation_text
 end

@@ -3,18 +3,19 @@ require 'capybara/dsl'
 class DemoQaCategory
     include Capybara::DSL
 
-    attr_accessor :first_item_on_category_list, :blog_product_id, :list_view_id, :grid_view_id, :grid_button_id, :list_button_id
+    attr_accessor :blog_product_id, :list_view_id, :grid_view_id, :grid_button_id, :list_button_id, :selected_items
 
     def initialize
-        @first_item_on_category_list = 'Accessories'
         @blog_product_id = 'single_product_page_container'
         @list_view_id = 'default_products_page_container'
         @grid_view_id = 'grid_view_products_page_container'
         @grid_button_id = 'Grid View'
         @list_button_id = 'Default View'
+        @selected_items = []
     end
 
     def click_add_button(index_of_item)
+        @selected_items << page.all(:css, "a.wpsc_product_title")[index_of_item].text
         page.all(:css, "input[name$=Buy]")[index_of_item].click
     end
 
