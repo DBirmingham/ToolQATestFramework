@@ -38,14 +38,10 @@ Priority Key : **High Priority (HP), Low Priority (LP)**
 	- List
 	- FaceBook likes
 
-Priority for testing was decided according to stakeholder testing prioritisation.  
+Priority for testing was decided according to stakeholder's requirements.
 
-### Behaviour Driven Development
- Provided a bridge language for the bussiness and tech teams to work from
-
-
-### Page Object Model (POM)
- created a maintainable and reusable test framework
+### Behaviour Driven Development (BDD)
+BDD was used to figure out the customer's requirements defined in automated acceptance tests. These are done so to ensure that it's readable and understood by everyone involved in the project (whether is the stakeholder or the developers).
 
 ## Quickstart
 ### Install
@@ -59,8 +55,8 @@ https://github.com/spartaglobal/ToolQATestFramework.git
  Then once you are in the root folder, in your terminal enter:
 
 ```
-bundle
-To run the test just type "cucumber"
+bundle install - to install the test plugins
+cucumber - to run tests
 
 ```
 ### Adding new tests
@@ -78,6 +74,8 @@ Scenario: If I submit a valid email and correctly follow the sequential steps th
         When I submit a valid email and username
         Then Receive the confirmation message
 ```
+### Implementing methods on the tests
+
 Once you run cucumber, the terminal will generate a step definition that you can use to run your tests. Any auto-generated _"And"_ must be changed to an appropriate _"Given"_, _"When"_, or _"Then"_.
 
 ```
@@ -97,32 +95,141 @@ Then("Receive the confirmation message") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 ```
+To successfully run a scenario, you can use the relevant method to ensure that you are testing the specific feature on the page. Thanks to the Page Object Model (POM), we are able to reuse the methods for different tests.
 
-### POM Ruby files and internal methods
+Below are the methods available to use: 
 
-Each class was divided up into different files with names that are easy to map:
-
-```Ruby
-demoqa_category.rb
-demoqa_checkout.rb
-demoqa_homepage.rb
-demoqa_register.rb
 ```
-Two Super classes
+> demoqa_category.rb
 
-```Ruby
-demoqa_site.rb
-gmail_site.rb
+> > > click_add_button
+
+> > > check_url
+
+> > > find_checkout_number
+
+> > > find_category_name_and_product_name
+
+> > > view_product_category_from_blog_post
+
+> > > view_grid_view
+
+> > > view_list_view
+
+> > > grid_view
+
+> > > list_view
+
+> > > click_view_title
+
+> > > check_item_in_list
+
+> > > check_item_in_grid
+
+> > > check_if_on_a_product_cat_page
+
+> > > get_blog_post_title
+
+> > > list_and_gird_items
 ```
-#### class DemoQaCategory example of the methods:
+```
+> demoqa_checkout.rb
 
-This class is in the demoqa_category.rb
+> > > check_checkout_error_message
 
-```Ruby
-find_category_name_and_product_name
-view_product_category_from_blog_post
-view_grid_view
-view_list_view
+> > > click_checkout_your_cart_continue_button
+
+> > > click_checkout_info_purchase_button
+
+> > > check_form_error_message
+
+> > > select_product
+
+> > > update_quantity
+
+> > > save_update
+
+> > > get_total_price_of_item
+
+> > > get_price_of_item
+
+> > > remove_item
+
+> > > get_empty_basket_message
+
+> > > item_list
+
+> > > check_url
+
+> > > get_item_name
+
+> > > fill_in_email
+
+> > > fill_in_first_name
+
+> > > fill_in_last_name
+
+> > > fill_in_address
+
+> > > fill_in_city
+
+> > > fill_in_county
+
+> > > fill_in_country
+
+> > > fill_in_post_code
+
+> > > fill_in_phone
+
+> > > fill_in_shipping
+
+> > > checkout_confirmation
+
+> > > check_if_on_cart_page
+```
+```
+> demoqa_homepage.rb
+
+> > > visit_homepage
+
+> > > click_blog_post
+
+> > > get_name_of_blog_post
+
+> > > click_on_proudct_category
+
+> > > click_on_my_account_button
+
+> > > visit_checkout_cart
+
+> > > click_on_all_products_button
+
+> > > hover_product_categories
+
+> > > select_random_category
+
+> > > check_url
+```
+```
+> demoqa_register.rb
+
+> > > navigate_register_page
+
+> > > fill_in_username
+
+> > > fill_in_email
+
+> > > click_register_button
+
+> > > register_confirmation_message
+
+> > > fill_in_password
+
+> > > click_reset_password
+
+> > > account_confirmation_message
+
+> > > check_register_link
 ```
 
 ## Tests
