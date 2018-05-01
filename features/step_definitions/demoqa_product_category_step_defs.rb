@@ -34,7 +34,7 @@ When("I click on a blog post") do
   end
 
 Then("I should view the correct blog post") do
-    expect(demo_category.get_blog_post_title).to eq @post
+    expect(demo_category.get_blog_post_title[0..16]).to eq @post[0..16]
 end
 
 Given('I am in the list view list') do
