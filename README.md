@@ -406,8 +406,8 @@ Then the product should be displayed in the list view
 ```
 **(3)**  As a User, I want to be able to successfully purchase the items in my basket.
 ```Cucumber
-Given: I am on the checkout page.
-And: I input the correct details.
-When: I submit the form.
-Then: I should receive the confirmation.
+Given I am on the checkout page.
+And I input the correct details.
+When I submit the form.
+Then I should receive the confirmation.
 ```
