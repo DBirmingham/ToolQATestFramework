@@ -3,13 +3,15 @@ require 'capybara/dsl'
 class GmailHomepage
     include Capybara::DSL
 
-    attr_accessor :url, :gmail_username_id, :gmail_password_id, :search_id
+    attr_accessor :url, :gmail_username_id, :gmail_password_id, :search_id, :log_in_username, :log_in_password
 
     def intialize
         @url = "https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession"
         @gmail_username_id = "identifierId"
         @gmail_password_id = "password"
         @search_id = 'gbqfq'
+        @log_in_username = 'spartaglobaltest2@gmail.com'
+        @log_in_password = 'Password!123'
     end
 
     def visit_home_page

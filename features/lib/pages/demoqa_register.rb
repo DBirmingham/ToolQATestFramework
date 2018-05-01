@@ -3,7 +3,7 @@ require 'capybara/dsl'
 class DemoQaRegister 
     include Capybara::DSL
 
-    attr_accessor :register_link_text, :username_id, :email_id, :register_button_id, :reset_password, :reset_button_id
+    attr_accessor :register_link_text, :username_id, :email_id, :register_button_id, :reset_password, :reset_button_id, :register_account_username, :register_email, :registration_completed_message, :registration_register_link, :registration_confirmation_message
 
     def initialize
         @register_link_text = 'Register'
@@ -12,6 +12,11 @@ class DemoQaRegister
         @register_button_id = 'wp-submit'
         @reset_password = 'pass1-text'
         @reset_button_id = 'wp-submit'
+        @register_account_username = 'Username68790'
+        @register_email = 'spartaglobaltest2@gmail.com'
+        @registration_completed_message = 'Registration complete. Please check your email.'
+        @registration_register_link = 'Enter your new password below.'
+        @registration_confirmation_message = 'Your password has been reset. Log in'
     end
 
     def navigate_register_page

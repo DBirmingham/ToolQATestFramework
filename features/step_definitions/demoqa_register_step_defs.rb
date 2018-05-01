@@ -4,13 +4,13 @@ Given("I navigate to the register page") do
 end
 
 When("I submit a valid email and username") do
-    demo_register.fill_in_username("Useasasdadawejk1231")
-    demo_register.fill_in_email("asdhbasasdsadsa12@gmail.com")
+    demo_register.fill_in_username(demo_register.register_account_username)
+    demo_register.fill_in_email(demo_register.register_email)
     demo_register.click_register_button
 end
 
 Then("I receive the confirmation message") do
-    expect(demo_register.register_confirmation_message).to eq 'Registration complete. Please check your email.'
+    expect(demo_register.register_confirmation_message).to eq demo_register.registration_completed_message
 end
 
 Given("I am on the email homepage") do
@@ -18,9 +18,9 @@ Given("I am on the email homepage") do
 end
 
 Given("I successfully logged in") do
-    gmail_homepage.fill_in_username("spartaglobaltest4@gmail.com")
+    gmail_homepage.fill_in_username(gmail_homepage.log_in_username)
     gmail_homepage.click_next_after_inputing_username
-    gmail_homepage.fill_in_password('Password!123')
+    gmail_homepage.fill_in_password(gmail_homepage.log_in_password)
     gmail_homepage.click_next_after_inputing_password
 end
 
@@ -37,7 +37,7 @@ end
 
 Given("I am on the password creating page") do
     @gmail.visit_password_set_page
-    expect(demo_register.check_register_link).to eq 'Enter your new password below.'
+    expect(demo_register.check_register_link).to eq demo_register.registration_register_link
 end
 
 When("I submit the valid password") do
@@ -46,5 +46,5 @@ When("I submit the valid password") do
 end
 
 Then("I should have successfully created an account") do
-    expect(demo_register.account_confirmation_message).to eq 'Your password has been reset. Log in'
+    expect(demo_register.account_confirmation_message).to eq demo_register.registration_confirmation_message
 end
